@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@color/colorPrimaryDark" />
+        app:srcCompat="@color/colorPrimary" />
 
     <EditText
         android:id="@+id/txtNombreUsuario"
@@ -47,13 +47,15 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="212dp"
+        android:layout_height="52dp"
         android:layout_marginTop="24dp"
+        android:background="@color/design_default_color_primary_dark"
         android:onClick="ingresar"
-        android:text="Button"
+        android:textColor="@color/colorBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+        tools:text="@string/btnLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

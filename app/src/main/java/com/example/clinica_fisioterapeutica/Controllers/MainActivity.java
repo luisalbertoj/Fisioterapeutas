@@ -2,6 +2,7 @@ package com.example.clinica_fisioterapeutica.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,31 +30,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ingresar(android.view.View vista) {
-        Call<ResponsePersona> call = ApiAdapter.getApiService().getPersonas("idPersona","asc");
-        call.enqueue(new Callback<ResponsePersona>() {
-            @Override
-            public void onResponse(Call<ResponsePersona> call, Response<ResponsePersona> response) {
-                //Toast.makeText(MainActivity.this, "Peticcion exitosa", Toast.LENGTH_SHORT).show();
-                if (response.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Entro", Toast.LENGTH_SHORT).show();
-                    ResponsePersona responsePersona = response.body();
-                    if (responsePersona != null) {
-                        for (Persona persona : responsePersona.getLista()) {
-                            if(campoNombreUsuario.getText().equals(persona.getUsuarioLogin())) {
-                                Toast.makeText(MainActivity.this, "Usuario logueado" + persona.getUsuarioLogin(), Toast.LENGTH_SHORT).show();
+        if (campoNombreUsuario.getText().equals("") || campoPassword.getText().equals("")) {
+            Toast.makeText(MainActivity.this, "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
+        } else {
+            Call<ResponsePersona> call = ApiAdapter.getApiService().getPersonas("idPersona", "asc");
+            call.enqueue(new Callback<ResponsePersona>() {
+                @Override
+                public void onResponse(Call<ResponsePersona> call, Response<ResponsePersona> response) {
+                    //Toast.makeText(MainActivity.this, "Peticcion exitosa", Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful()) {
+                        Toast.makeText(MainActivity.this, "Entro", Toast.LENGTH_SHORT).show();
+                        ResponsePersona responsePersona = response.body();
+                        if (responsePersona != null) {
+                            for (Persona persona : responsePersona.getLista()) {
+                                if (campoNombreUsuario.getText().equals(persona.getUsuarioLogin())) {
+                                    Toast.makeText(MainActivity.this, "Usuario logueado" + persona.getUsuarioLogin(), Toast.LENGTH_SHORT).show();
+                                    Intent intentNewActivity = new Intent(MainActivity.this, PacientesActivity.class);
+                                    Bundle b = new Bundle();
+                                    b.putString("usuario", campoNombreUsuario.getText().toString());
+                                    b.putString("idPersona", "" + persona.getIdPersona());
+                                    intentNewActivity.putExtras(b);
+                                    startActivity(intentNewActivity);
+                                }
                             }
+                            Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(MainActivity.this, "Error al leer los datos", Toast.LENGTH_SHORT).show();
                         }
 
-                    } else {
-                        Toast.makeText(MainActivity.this, "Error al leer los datos", Toast.LENGTH_SHORT).show();
                     }
-
                 }
-            }
-            @Override
-            public void onFailure(Call<ResponsePersona> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Peticcion fallida", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+                @Override
+                public void onFailure(Call<ResponsePersona> call, Throwable t) {
+                    Toast.makeText(MainActivity.this, "Peticcion fallida", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

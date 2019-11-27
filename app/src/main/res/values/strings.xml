@@ -3,4 +3,5 @@
     <string name="fondo">fondo base</string>
     <string name="campoUsuario">Nombre de usuario</string>
     <string name="campoContraseña">contraseña</string>
+    <string name="btnLogin">Ingresar</string>
 </resources>
