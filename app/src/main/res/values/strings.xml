@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Clinica_fisioterapeutica</string>
+    <string name="fondo">fondo base</string>
+    <string name="campoUsuario">Nombre de usuario</string>
+    <string name="campoContraseña">contraseña</string>
+</resources>
