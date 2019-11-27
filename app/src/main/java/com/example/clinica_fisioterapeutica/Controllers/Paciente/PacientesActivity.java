@@ -1,4 +1,4 @@
-package com.example.clinica_fisioterapeutica.Controllers;
+package com.example.clinica_fisioterapeutica.Controllers.Paciente;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.clinica_fisioterapeutica.Models.Persona;
@@ -23,6 +26,7 @@ import retrofit2.Response;
 
 public class PacientesActivity extends AppCompatActivity {
     RecyclerView rvPersona;
+    TextView buscador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,8 @@ public class PacientesActivity extends AppCompatActivity {
         LinearLayoutManager layRec =  new LinearLayoutManager(this);
         rvPersona.setLayoutManager(layRec);
         rvPersona.setHasFixedSize(true);
+        buscador = findViewById(R.id.tvBuscarPaciente);
+        PacientesActivity.this.buscarPaciente();
     }
     @Override
     protected void onResume() {
@@ -77,4 +83,38 @@ public class PacientesActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void buscarPaciente() {
+        buscador.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Call<ResponsePersona> callPersonas = ApiAdapter.getApiService().getPersonasLike(
+                        "idPersona","asc", "S",
+                        "{\"nombre\":\""+buscador.getText().toString()+"\"}");
+                callPersonas.enqueue(new Callback<ResponsePersona>() {
+                    @Override
+                    public void onResponse(Call<ResponsePersona> call, Response<ResponsePersona> response) {
+                        cargarLista(response.body().getLista());
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponsePersona> call, Throwable t) {
+                        Log.w("warning",t.getCause().toString());
+                    }
+                });
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+    }
+
 }

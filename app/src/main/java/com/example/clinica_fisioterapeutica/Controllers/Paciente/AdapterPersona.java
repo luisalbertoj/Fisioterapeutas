@@ -1,4 +1,4 @@
-package com.example.clinica_fisioterapeutica.Controllers;
+package com.example.clinica_fisioterapeutica.Controllers.Paciente;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.PacientesActivity"
+    tools:context=".Controllers.Paciente.PacientesActivity"
     android:orientation="vertical"
     >
 
@@ -14,13 +14,20 @@
         android:onClick="irAgregarEditarPersona"
         android:text="@string/btnCrearPersona" />
 
+    <EditText
+        android:id="@+id/tvBuscarPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/tvBuscadorPacientes"
+        android:inputType="textPersonName" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPersona"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvPersona"
 
         />
-
 
 
 </LinearLayout>

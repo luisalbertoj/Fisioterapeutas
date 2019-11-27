@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Controllers.AgregarEditarPersonaActivity"></activity>
-        <activity android:name=".Controllers.PacientesActivity" />
+        <activity android:name=".Controllers.Paciente.AgregarEditarPersonaActivity"></activity>
+        <activity android:name=".Controllers.Paciente.PacientesActivity" />
         <activity android:name=".Controllers.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

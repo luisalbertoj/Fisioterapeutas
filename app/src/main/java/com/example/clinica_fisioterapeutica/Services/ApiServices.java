@@ -16,6 +16,14 @@ public interface ApiServices {
             @Query("orderDir")String orderDir
     );
 
+    @GET("persona")
+    Call<ResponsePersona> getPersonasLike(
+            @Query("orderBy")String orderBy,
+            @Query("orderDir")String orderDir,
+            @Query("like") String like,
+            @Query("ejemplo") String ejemplo
+    );
+
     @FormUrlEncoded
     @POST("upload/photo")
     Call<ResponsePersona> postPhoto(
