@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ingresar(android.view.View vista) {
-        if (campoNombreUsuario.getText().equals("") || campoPassword.getText().equals("")) {
+        if (campoNombreUsuario.getText().toString().equals("") || campoPassword.getText().toString().equals("")) {
             Toast.makeText(MainActivity.this, "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
         } else {
             Call<ResponsePersona> call = ApiAdapter.getApiService().getPersonas("idPersona", "asc");
@@ -39,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<ResponsePersona> call, Response<ResponsePersona> response) {
                     //Toast.makeText(MainActivity.this, "Peticcion exitosa", Toast.LENGTH_SHORT).show();
                     if (response.isSuccessful()) {
-                        Toast.makeText(MainActivity.this, "Entro", Toast.LENGTH_SHORT).show();
                         ResponsePersona responsePersona = response.body();
                         if (responsePersona != null) {
+
                             for (Persona persona : responsePersona.getLista()) {
-                                if (campoNombreUsuario.getText().equals(persona.getUsuarioLogin())) {
+
+                                if (campoNombreUsuario.getText().toString().equals(persona.getUsuarioLogin())) {
                                     Toast.makeText(MainActivity.this, "Usuario logueado" + persona.getUsuarioLogin(), Toast.LENGTH_SHORT).show();
                                     Intent intentNewActivity = new Intent(MainActivity.this, PacientesActivity.class);
                                     Bundle b = new Bundle();
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                                     b.putString("idPersona", "" + persona.getIdPersona());
                                     intentNewActivity.putExtras(b);
                                     startActivity(intentNewActivity);
+                                    return;
+
                                 }
                             }
                             Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show();
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<ResponsePersona> call, Throwable t) {
-                    Toast.makeText(MainActivity.this, "Peticcion fallida", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Peticcion fallida:" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
