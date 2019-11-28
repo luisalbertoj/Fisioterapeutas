@@ -2,7 +2,7 @@ package com.example.clinica_fisioterapeutica.Models;
 
 
 public class Persona {
-    private Long idPersona;
+    private String idPersona;
     private String usuarioLogin;
     private String nombre;
     private String apellido;
@@ -14,11 +14,11 @@ public class Persona {
     private String fechaNacimiento;
 
 
-    public Long getIdPersona() {
+    public String getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(Long idPersona) {
+    public void setIdPersona(String idPersona) {
         this.idPersona = idPersona;
     }
 

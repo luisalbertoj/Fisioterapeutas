@@ -10,6 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
         android:contentDescription="@string/fondo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@color/colorPrimary" />
+        app:srcCompat="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/txtNombreUsuario"
@@ -28,6 +29,8 @@
         android:ems="10"
         android:hint="@string/campoUsuario"
         android:inputType="textPersonName"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/txtPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +44,8 @@
         android:ems="10"
         android:hint="@string/campoContraseña"
         android:inputType="textPassword"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreUsuario" />
@@ -49,11 +54,13 @@
         android:id="@+id/button"
         android:layout_width="212dp"
         android:layout_height="52dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/design_default_color_primary_dark"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/holo_blue_dark"
         android:onClick="ingresar"
-        android:textColor="@color/colorBlack"
+        android:text="@string/btnLogin"
+        android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword"
         tools:text="@string/btnLogin" />

@@ -19,4 +19,7 @@
     <string name="textEmail">Email</string>
     <string name="tvId">Id</string>
     <string name="btnGuardarCambios">Guardar</string>
+    <string name="btnPacientes">Administrar Pacientes</string>
+    <string name="btnFicha">Administrar Fichas Clinicas</string>
+    <string name="btnSalir">Salir</string>
 </resources>

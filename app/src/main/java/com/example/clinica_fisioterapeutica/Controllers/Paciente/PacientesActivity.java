@@ -72,7 +72,7 @@ public class PacientesActivity extends AppCompatActivity {
         adapter.setListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(PacientesActivity.this,"categoria seleccionada "+lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona(),Toast.LENGTH_LONG).show();
+                Toast.makeText(PacientesActivity.this,"Persona seleccionada "+lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona(),Toast.LENGTH_LONG).show();
                 Intent intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
                 Bundle b = new Bundle();
                 b.putString("idPersona","" + lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona());
