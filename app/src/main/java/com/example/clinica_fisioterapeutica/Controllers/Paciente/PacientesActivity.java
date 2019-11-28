@@ -43,9 +43,14 @@ public class PacientesActivity extends AppCompatActivity {
         btnAgregar = findViewById(R.id.btnAgregar);
         PacientesActivity.this.buscarPaciente();
         bundle = this.getIntent().getExtras();
-        if(bundle.containsKey("viewFicha")) {
-            btnAgregar.setVisibility(View.INVISIBLE);
+        try {
+            if(bundle.containsKey("viewFicha")) {
+                btnAgregar.setVisibility(View.INVISIBLE);
+            }
+        } catch (Exception e) {
+
         }
+
     }
     @Override
     protected void onResume() {
@@ -83,11 +88,15 @@ public class PacientesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(PacientesActivity.this,"Persona seleccionada "+lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona(),Toast.LENGTH_LONG).show();
                 Intent intentNewActivity;
-                if(bundle.containsKey("viewFicha")) {
-                    intentNewActivity = new Intent(PacientesActivity.this, FichasActivity.class);
-                } else {
-                    intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
+                try {
+                    if(bundle.containsKey("viewFicha")) {
+                        intentNewActivity = new Intent(PacientesActivity.this, FichasActivity.class);
+                    } else {
+                        intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
 
+                    }
+                } catch (Exception e) {
+                    intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
                 }
                 Bundle b = new Bundle();
                 b.putString("idPersona","" + lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona());

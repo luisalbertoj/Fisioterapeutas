@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fichas.FichasActivity">
+    tools:context=".Controllers.Fichas.FichasActivity"
+    android:orientation="vertical"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="irAgregarEditarPersona"
+        android:text="@string/btnCrearPersona" />
+
+    <EditText
+        android:id="@+id/tvBuscarPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/tvBuscadorPacientes"
+        android:inputType="textPersonName" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPersona"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+
+</LinearLayout>
