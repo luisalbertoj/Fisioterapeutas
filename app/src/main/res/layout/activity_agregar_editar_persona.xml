@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:enabled="false"
         android:hint="@string/textFechaNacimiento"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/tipoPersona"
@@ -118,5 +119,14 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/btnFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openDataPicker"
+        android:text="@string/btnFecha"
+        app:layout_constraintBottom_toBottomOf="@+id/fechaNacimiento"
+        app:layout_constraintStart_toEndOf="@+id/tipoPersona" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

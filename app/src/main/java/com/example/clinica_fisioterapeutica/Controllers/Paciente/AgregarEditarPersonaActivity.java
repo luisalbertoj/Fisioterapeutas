@@ -2,9 +2,12 @@ package com.example.clinica_fisioterapeutica.Controllers.Paciente;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.Person;
+import java.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,10 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
     TextView cedula;
     TextView tipoPersona;
     TextView fechaNacimiento;
+    Calendar calendar;
+    DatePickerDialog dataPiker;
+
+
 
 
     @Override
@@ -95,7 +102,7 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
         persona.setApellido(apellido.getText().toString());
         persona.setCedula(cedula.getText().toString());
         persona.setEmail(email.getText().toString());
-        persona.setFechaNacimiento(fechaNacimiento.getText().toString());
+        persona.setFechaNacimiento(fechaNacimiento.getText().toString() + "  00:00:00");
         persona.setRuc(ruc.getText().toString());
         persona.setTelefono(telefono.getText().toString());
         persona.setTipoPersona(tipoPersona.getText().toString());
@@ -111,8 +118,37 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Persona> call, Throwable t) {
                 Log.w("warning",t.getCause());
-                finish();
+                if(t.getCause() == null) {
+                    finish();
+                }
+                Toast.makeText(AgregarEditarPersonaActivity.this,"Error: " + t.getCause(),Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void openDataPicker(android.view.View view) {
+        calendar = Calendar.getInstance();
+        int day = 24;
+        int month = 06;
+        int year = 1996;
+        if(!fechaNacimiento.getText().toString().equals("")) {
+            String fechaPer = fechaNacimiento.getText().toString();
+            String [] split = fechaPer.split("-");
+             day = Integer.parseInt(split[2]);
+             month = Integer.parseInt(split[1]);
+             year = Integer.parseInt(split[0]);
+        } else {
+             day = calendar.get(Calendar.DAY_OF_MONTH);
+             month = calendar.get(Calendar.MONTH);
+             year = calendar.get(Calendar.YEAR);
+        }
+
+        dataPiker = new DatePickerDialog(AgregarEditarPersonaActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int myear, int mmonth, int mdayOfMonth) {
+                fechaNacimiento.setText(myear + "-" + mmonth+1 + "-" + mdayOfMonth);
+            }
+        }, day, month, year);
+        dataPiker.show();
+
     }
 }
