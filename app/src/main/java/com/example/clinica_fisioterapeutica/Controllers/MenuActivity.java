@@ -22,7 +22,7 @@ public class MenuActivity extends AppCompatActivity {
         return;
     }
     public void openFichas(android.view.View view) {
-        Intent intentNewActivity = new Intent(MenuActivity.this, FichasActivity.class);
+        Intent intentNewActivity = new Intent(MenuActivity.this, FichaArchivoActivity.class);
         startActivity(intentNewActivity);
         return;
     }
