@@ -1,6 +1,8 @@
 package com.example.clinica_fisioterapeutica.Services;
 
+import com.example.clinica_fisioterapeutica.Models.FichaClinica;
 import com.example.clinica_fisioterapeutica.Models.Persona;
+import com.example.clinica_fisioterapeutica.Models.ResponseFichaClinica;
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 
 import retrofit2.Call;
@@ -43,6 +45,37 @@ public interface ApiServices {
     @DELETE("persona/{idPersona}")
     Call<Persona> deletePersona(
             @Path("idPersona") String idPersona
+    );
+
+    // -----------------------------------------------
+
+    // --------------- Rutas Ficha --------------
+    @GET("fichaClinica")
+    Call<ResponseFichaClinica> getFichas(
+            @Query("orderBy")String orderBy,
+            @Query("orderDir")String orderDir
+    );
+    @GET("fichaClinica/{idFichaClinica}")
+    Call<FichaClinica> getFicha(
+            @Path("idFichaClinica") String idFichaClinica
+    );
+    @GET("fichaClinica")
+    Call<ResponseFichaClinica> getFichaLike(
+            @Query("orderBy")String orderBy,
+            @Query("orderDir")String orderDir,
+            @Query("like") String like,
+            @Query("ejemplo") String ejemplo
+    );
+
+    @POST("fichaClinica")
+    Call<FichaClinica> createFicha(@Body FichaClinica fichaClinica);
+
+    @PUT("fichaClinica")
+    Call<FichaClinica> updateFicha(@Body FichaClinica fichaClinica);
+
+    @DELETE("fichaClinica/{idFichaClinica}")
+    Call<FichaClinica> deleteFicha(
+            @Path("idFichaClinica") String idFichaClinica
     );
 
     // -----------------------------------------------

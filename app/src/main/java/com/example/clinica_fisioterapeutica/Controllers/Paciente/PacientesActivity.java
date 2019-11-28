@@ -10,9 +10,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichasActivity;
 import com.example.clinica_fisioterapeutica.Models.Persona;
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 import com.example.clinica_fisioterapeutica.R;
@@ -27,6 +29,8 @@ import retrofit2.Response;
 public class PacientesActivity extends AppCompatActivity {
     RecyclerView rvPersona;
     TextView buscador;
+    Button btnAgregar;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +40,12 @@ public class PacientesActivity extends AppCompatActivity {
         rvPersona.setLayoutManager(layRec);
         rvPersona.setHasFixedSize(true);
         buscador = findViewById(R.id.tvBuscarPaciente);
+        btnAgregar = findViewById(R.id.btnAgregar);
         PacientesActivity.this.buscarPaciente();
+        bundle = this.getIntent().getExtras();
+        if(bundle.containsKey("viewFicha")) {
+            btnAgregar.setVisibility(View.INVISIBLE);
+        }
     }
     @Override
     protected void onResume() {
@@ -73,13 +82,18 @@ public class PacientesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(PacientesActivity.this,"Persona seleccionada "+lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona(),Toast.LENGTH_LONG).show();
-                Intent intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
+                Intent intentNewActivity;
+                if(bundle.containsKey("viewFicha")) {
+                    intentNewActivity = new Intent(PacientesActivity.this, FichasActivity.class);
+                } else {
+                    intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
+
+                }
                 Bundle b = new Bundle();
                 b.putString("idPersona","" + lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona());
                 b.putString("nombre",lista1[rvPersona.getChildAdapterPosition(view)].getNombre());
                 intentNewActivity.putExtras(b);
                 startActivity(intentNewActivity);
-
             }
         });
     }
