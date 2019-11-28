@@ -91,8 +91,6 @@ public interface ApiServices {
             @Path("idFichaClinica") String idFichaClinica
     );
 
-
-    @FormUrlEncoded
     @Multipart
     @POST("FichaArchivo/archivo")
             Call<ResponseFichaArchivo> uploadFile(
