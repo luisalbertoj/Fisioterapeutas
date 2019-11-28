@@ -92,9 +92,11 @@ public interface ApiServices {
     );
 
     @Multipart
-    @POST("FichaArchivo/archivo")
+    @POST("fichaArchivo/archivo")
             Call<ResponseFichaArchivo> uploadFile(
-            @Body FichaArchivo fichaArchivo
+            @Part MultipartBody.Part file,
+            @Part MultipartBody.Part nombre,
+            @Part MultipartBody.Part idFichaClinica
             );
     // -----------------------------------------------
 }
