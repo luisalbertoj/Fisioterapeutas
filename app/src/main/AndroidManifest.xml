@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Controllers.Fichas.AgregarEditarFichaActivity"></activity>
         <activity android:name=".Controllers.Fichas.FichasActivity"></activity>
         <activity android:name=".Controllers.MenuActivity" />
         <activity android:name=".Controllers.Paciente.AgregarEditarPersonaActivity" />
