@@ -4,4 +4,5 @@
     <string name="campoUsuario">Nombre de usuario</string>
     <string name="campoContraseña">contraseña</string>
     <string name="btnLogin">Ingresar</string>
+    <string name="agregar_archivo">Agregar Archivo</string>
 </resources>

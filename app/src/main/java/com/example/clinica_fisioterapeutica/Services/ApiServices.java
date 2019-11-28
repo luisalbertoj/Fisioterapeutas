@@ -1,12 +1,16 @@
 package com.example.clinica_fisioterapeutica.Services;
 
+import com.example.clinica_fisioterapeutica.Models.ResponseFichaArchivo;
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface ApiServices {
@@ -17,11 +21,12 @@ public interface ApiServices {
     );
 
     @FormUrlEncoded
-    @POST("upload/photo")
-    Call<ResponsePersona> postPhoto(
-            @Field("image") String base64,
-            @Field("extension") String extension,
-            @Field("user_id") String user_id
+    @Multipart
+    @POST("FichaArchivo/archivo")
+    Call<ResponseFichaArchivo> uploadFile(
+            @Part("file") MultipartBody.Part file,
+            @Field("nombre") String nombre,
+            @Field("idFichaClinica") Long idFichaClinica
     );
 
     @GET("login")
