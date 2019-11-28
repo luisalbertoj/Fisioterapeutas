@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controllers.Paciente.AgregarEditarPersonaActivity">
+
+    <EditText
+        android:id="@+id/idPersona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/textId"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarPaciente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/textFechaNacimiento"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/tipoPersona"
+        app:layout_constraintTop_toBottomOf="@+id/tipoPersona" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/textEmail"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/telefono"
+        app:layout_constraintTop_toBottomOf="@+id/telefono" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="11dp"
+        android:background="@color/colorPrimary"
+        android:onClick="AgregarEditarPersona"
+        android:text="@string/btnGuardarCambios"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/idPersona"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idPersona"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/textNombre"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/idPersona"
+        app:layout_constraintTop_toBottomOf="@+id/idPersona" />
+
+    <EditText
+        android:id="@+id/cedula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/textCedula"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/ruc"
+        app:layout_constraintTop_toBottomOf="@+id/ruc" />
+
+    <EditText
+        android:id="@+id/apellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/textApellido"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/nombre"
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+
+    <EditText
+        android:id="@+id/telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/textTelefono"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/apellido"
+        app:layout_constraintTop_toBottomOf="@+id/apellido" />
+
+    <EditText
+        android:id="@+id/tipoPersona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="@string/textTipoPersona"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/cedula"
+        app:layout_constraintTop_toBottomOf="@+id/cedula" />
+
+    <EditText
+        android:id="@+id/ruc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/textRuc"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/btnFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openDataPicker"
+        android:text="@string/btnFecha"
+        app:layout_constraintBottom_toBottomOf="@+id/fechaNacimiento"
+        app:layout_constraintStart_toEndOf="@+id/tipoPersona" />
+
+    <Button
+        android:id="@+id/btnEliminarPaciente"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="6dp"
+        android:background="@android:color/holo_red_dark"
+        android:onClick="eliminarPaciente"
+        android:text="@string/btnEliminar"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idPersona"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

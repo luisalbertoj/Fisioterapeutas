@@ -4,5 +4,28 @@
     <string name="campoUsuario">Nombre de usuario</string>
     <string name="campoContraseña">contraseña</string>
     <string name="btnLogin">Ingresar</string>
+
     <string name="agregar_archivo">Agregar Archivo</string>
+
+    <string name="btnCrearPersona">Agregar o Editar Paciente</string>
+    <string name="btnBuscar">Buscar</string>
+    <string name="tvBuscadorPacientes">Ingresa el nombre o apellido del paciente</string>
+    <string name="textId">ID Persona</string>
+    <string name="textNombre">Nombre</string>
+    <string name="textApellido">Apellido</string>
+    <string name="textTelefono">Telefono</string>
+    <string name="txtEmail">Email</string>
+    <string name="textRuc">Ruc</string>
+    <string name="textCedula">Cedula</string>
+    <string name="textTipoPersona">Tipo de Persona</string>
+    <string name="textFechaNacimiento">Fecha de nacimiento</string>
+    <string name="textEmail">Email</string>
+    <string name="tvId">Id</string>
+    <string name="btnGuardarCambios">Guardar</string>
+    <string name="btnPacientes">Administrar Pacientes</string>
+    <string name="btnFicha">Administrar Fichas Clinicas</string>
+    <string name="btnSalir">Salir</string>
+    <string name="btnFecha">Fecha</string>
+    <string name="btnEliminar">Eliminar</string>
+
 </resources>

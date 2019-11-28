@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.clinica_fisioterapeutica.Controllers.Paciente.PacientesActivity;
 import com.example.clinica_fisioterapeutica.Models.Persona;
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 import com.example.clinica_fisioterapeutica.R;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (campoNombreUsuario.getText().toString().equals(persona.getUsuarioLogin())) {
                                     Toast.makeText(MainActivity.this, "Usuario logueado" + persona.getUsuarioLogin(), Toast.LENGTH_SHORT).show();
-                                    Intent intentNewActivity = new Intent(MainActivity.this, PacientesActivity.class);
+                                    Intent intentNewActivity = new Intent(MainActivity.this, MenuActivity.class);
                                     Bundle b = new Bundle();
                                     b.putString("usuario", campoNombreUsuario.getText().toString());
                                     b.putString("idPersona", "" + persona.getIdPersona());
