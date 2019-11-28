@@ -7,6 +7,8 @@ import android.app.Person;
 import java.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,11 +34,9 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
     TextView cedula;
     TextView tipoPersona;
     TextView fechaNacimiento;
+    Button btnEliminar;
     Calendar calendar;
     DatePickerDialog dataPiker;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +51,17 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
         cedula = findViewById(R.id.cedula);
         tipoPersona = findViewById(R.id.tipoPersona);
         fechaNacimiento = findViewById(R.id.fechaNacimiento);
+        btnEliminar = findViewById(R.id.btnEliminarPaciente);
 
         Bundle bundle = this.getIntent().getExtras();
         if(bundle != null && bundle.containsKey("idPersona")){
             idPersona.setText(bundle.getString("idPersona"));
             nombre.setText(bundle.getString("nombre"));
             this.cargarPersona(bundle.getString("idPersona"));
+            btnEliminar.setVisibility(View.VISIBLE);
+        } else {
+            btnEliminar.setVisibility(View.INVISIBLE);
+            idPersona.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -107,7 +112,7 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
         persona.setTelefono(telefono.getText().toString());
         persona.setTipoPersona(tipoPersona.getText().toString());
 
-        Call<Persona> callPersona=idPersona==null?ApiAdapter.getApiService().createPersona(persona):ApiAdapter.getApiService().updatePersona(persona);
+        Call<Persona> callPersona=idPersona.getText().toString().equals("")?ApiAdapter.getApiService().createPersona(persona):ApiAdapter.getApiService().updatePersona(persona);
         callPersona.enqueue(new Callback<Persona>() {
             @Override
             public void onResponse(Call<Persona> call, Response<Persona> response) {
@@ -150,5 +155,23 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
         }, day, month, year);
         dataPiker.show();
 
+    }
+
+    public void eliminarPaciente(android.view.View view) {
+        Call<Persona> callPersona = ApiAdapter.getApiService().deletePersona(idPersona.getText().toString());
+        callPersona.enqueue(new Callback<Persona>() {
+            @Override
+            public void onResponse(Call<Persona> call, Response<Persona> response) {
+                Toast.makeText(AgregarEditarPersonaActivity.this,"Eliminacion correcta",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<Persona> call, Throwable t) {
+                Log.w("warning",t.getCause());
+                Toast.makeText(AgregarEditarPersonaActivity.this,"Error: " + t.getCause(),Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 }

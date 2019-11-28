@@ -5,6 +5,7 @@ import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -38,6 +39,11 @@ public interface ApiServices {
 
     @PUT("persona")
     Call<Persona> updatePersona(@Body Persona persona);
+
+    @DELETE("persona/{idPersona}")
+    Call<Persona> deletePersona(
+            @Path("idPersona") String idPersona
+    );
 
     // -----------------------------------------------
 }

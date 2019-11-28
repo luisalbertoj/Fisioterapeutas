@@ -62,4 +62,5 @@ public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.AdapterP
             tvIdPersona = view.findViewById(R.id.txtNombrePersonaItem);
         }
     }
+
 }
