@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichasActivity;
+import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichaActivity;
+import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichaArchivoActivity;
 import com.example.clinica_fisioterapeutica.Controllers.Paciente.PacientesActivity;
 import com.example.clinica_fisioterapeutica.R;
 
@@ -22,7 +23,7 @@ public class MenuActivity extends AppCompatActivity {
         return;
     }
     public void openFichas(android.view.View view) {
-        Intent intentNewActivity = new Intent(MenuActivity.this, FichaArchivoActivity.class);
+        Intent intentNewActivity = new Intent(MenuActivity.this, FichaActivity.class);
         startActivity(intentNewActivity);
         return;
     }

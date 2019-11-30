@@ -1,19 +1,13 @@
-package com.example.clinica_fisioterapeutica.Controllers;
+package com.example.clinica_fisioterapeutica.Controllers.Fichas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +21,6 @@ import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -94,7 +85,7 @@ public class FichaArchivoActivity extends AppCompatActivity {
         ficha.setNombre(filee.getName());
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/octet-stream"), ficha.getFile());
         MultipartBody.Part file = MultipartBody.Part.createFormData("file", ficha.getNombre(), requestBody);
-        MultipartBody.Part nombre = MultipartBody.Part.createFormData("nombre", ficha.getNombre());
+        MultipartBody.Part nombre = MultipartBody.Part.createFormData("motivoConsulta", ficha.getNombre());
         MultipartBody.Part idFichaClinica = MultipartBody.Part.createFormData("idFichaClinica", ficha.getIdFichaClinica());
         Call<ResponseFichaArchivo> call = ApiAdapter.getApiService().uploadFile(file, nombre, idFichaClinica);
         call.enqueue(new Callback<ResponseFichaArchivo>() {

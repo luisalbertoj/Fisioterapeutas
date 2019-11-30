@@ -14,7 +14,7 @@
         android:background="@color/colorPrimary"
         android:onClick="openSalir"
         android:text="@string/btnSalir"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFichas" />
@@ -27,7 +27,7 @@
         android:background="@color/colorPrimary"
         android:onClick="openFichas"
         android:text="@string/btnFicha"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPacientes" />
@@ -40,7 +40,7 @@
         android:background="@color/colorPrimary"
         android:onClick="openPacientes"
         android:text="@string/btnPacientes"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

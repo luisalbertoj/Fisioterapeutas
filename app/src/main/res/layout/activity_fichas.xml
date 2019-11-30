@@ -4,27 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fichas.FichasActivity"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    >
+    tools:context=".Controllers.Fichas.FichaActivity">
 
     <Button
         android:id="@+id/btnAgregar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:onClick="irAgregarEditarPersona"
-        android:text="@string/btnCrearPersona" />
+        android:text="@string/btnCrearPersona"
+        android:textColor="@color/primaryTextColor" />
 
     <EditText
-        android:id="@+id/tvBuscarPaciente"
+        android:id="@+id/tvBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/tvBuscadorPacientes"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/primaryTextColor"
+        android:textColorHint="@color/primaryTextColor" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPersona"
+        android:id="@+id/rvFichaClinica"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
