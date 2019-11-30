@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichasActivity;
 import com.example.clinica_fisioterapeutica.Controllers.Paciente.PacientesActivity;
+import com.example.clinica_fisioterapeutica.Controllers.Turnos.TurnosActivity;
 import com.example.clinica_fisioterapeutica.R;
 
 public class MenuActivity extends AppCompatActivity {
@@ -28,6 +29,11 @@ public class MenuActivity extends AppCompatActivity {
     }
     public void openSalir(android.view.View view) {
         Intent intentNewActivity = new Intent(MenuActivity.this, MainActivity.class);
+        startActivity(intentNewActivity);
+        return;
+    }
+    public void openTurnos(android.view.View view) {
+        Intent intentNewActivity = new Intent(MenuActivity.this, TurnosActivity.class);
         startActivity(intentNewActivity);
         return;
     }
