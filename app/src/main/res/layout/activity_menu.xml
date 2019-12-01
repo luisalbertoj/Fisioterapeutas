@@ -17,7 +17,7 @@
         android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFichas" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTurnos" />
 
     <Button
         android:id="@+id/btnFichas"
@@ -44,4 +44,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnTurnos"
+        android:layout_width="411dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorPrimary"
+        android:onClick="openTurnos"
+        android:text="Turnos"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFichas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

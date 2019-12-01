@@ -3,12 +3,7 @@
     package="com.example.clinica_fisioterapeutica">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +19,9 @@
 
         <activity android:name=".Controllers.Fichas.FichaActivity"></activity>
         <activity android:name=".Controllers.Fichas.AgregarEditarFichaActivity" />
+        <activity android:name=".Controllers.FichaArchivoActivity"></activity>
+        <activity android:name=".Controllers.Turnos.TurnosActivity"></activity>
+        <activity android:name=".Controllers.Fichas.FichasActivity"></activity>
         <activity android:name=".Controllers.MenuActivity" />
         <activity android:name=".Controllers.Paciente.AgregarEditarPersonaActivity" />
         <activity android:name=".Controllers.Paciente.PacientesActivity" />
@@ -34,9 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import com.example.clinica_fisioterapeutica.Models.Persona;
 import com.example.clinica_fisioterapeutica.Models.ResponseFichaClinica;
 
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
+import com.example.clinica_fisioterapeutica.Models.ResponseReserva;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -113,4 +114,12 @@ public interface ApiServices {
             @Path("idFichaArchivo") String idFichaArchivo
     );
     // -----------------------------------------------
+
+    // --------------- Rutas Turnos --------------
+
+    @GET("reserva")
+    Call<ResponseReserva> getReservas(
+            @Query("orderBy")String orderBy,
+            @Query("orderDir")String orderDir
+    );
 }
