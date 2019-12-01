@@ -4,148 +4,216 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Fichas.AgregarEditarFichaActivity">
+    android:background="@mipmap/fondo1"
+    tools:context=".Controllers.Fichas.AgregarEditarFichaActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <EditText
         android:id="@+id/idPersona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_width="255dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginLeft="147dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:background="#00BBB2B2"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/textId"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/btnEliminarPaciente"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/fechaNacimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/textFechaNacimiento"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/tipoPersona"
-        app:layout_constraintTop_toBottomOf="@+id/tipoPersona" />
+        app:layout_constraintBottom_toTopOf="@+id/cedula"
+        app:layout_constraintEnd_toStartOf="@+id/btnFecha"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="244dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="7dp"
+        android:background="#00BBB2B2"
         android:ems="10"
         android:hint="@string/textEmail"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/telefono"
-        app:layout_constraintTop_toBottomOf="@+id/telefono" />
+        android:textColor="#000C0B0B"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="11dp"
+        android:layout_width="156dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
         android:background="@color/colorPrimary"
         android:onClick="AgregarEditarPersona"
         android:text="@string/btnGuardarCambios"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="@+id/idPersona"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/idPersona"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btnEliminarPaciente"
+        tools:layout_editor_absoluteY="517dp" />
 
     <EditText
         android:id="@+id/nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="254dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="1dp"
+        android:background="#00BBB2B2"
         android:ems="10"
         android:hint="@string/textNombre"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/idPersona"
-        app:layout_constraintTop_toBottomOf="@+id/idPersona" />
+        app:layout_constraintBottom_toTopOf="@+id/apellido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/cedula"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="251dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="6dp"
+        android:background="#00BBB2B2"
         android:ems="10"
         android:hint="@string/textCedula"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/ruc"
-        app:layout_constraintTop_toBottomOf="@+id/ruc" />
+        app:layout_constraintBottom_toTopOf="@+id/telefono"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/apellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#00BBB2B2"
         android:ems="10"
         android:hint="@string/textApellido"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/nombre"
-        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+        app:layout_constraintBottom_toTopOf="@+id/fechaNacimiento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/telefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="246dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="4dp"
+        android:background="#00BBB2B2"
         android:ems="10"
         android:hint="@string/textTelefono"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/apellido"
-        app:layout_constraintTop_toBottomOf="@+id/apellido" />
+        app:layout_constraintBottom_toTopOf="@+id/ruc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/tipoPersona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="2dp"
+        android:background="#00BBB2B2"
         android:ems="10"
         android:enabled="true"
         android:hint="@string/textTipoPersona"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/cedula"
-        app:layout_constraintTop_toBottomOf="@+id/cedula" />
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/ruc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="245dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:ems="10"
         android:hint="@string/textRuc"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintBottom_toTopOf="@+id/tipoPersona"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="62dp"
+        android:layout_height="41dp"
+        android:background="#E9A124"
         android:onClick="openDataPicker"
         android:text="@string/btnFecha"
-        app:layout_constraintBottom_toBottomOf="@+id/fechaNacimiento"
-        app:layout_constraintStart_toEndOf="@+id/tipoPersona" />
+        android:textColor="#EEFFFFFF"
+        tools:layout_editor_absoluteX="333dp"
+        tools:layout_editor_absoluteY="199dp" />
 
     <Button
         android:id="@+id/btnEliminarPaciente"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_marginBottom="6dp"
+        android:layout_width="153dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
         android:background="@android:color/holo_red_dark"
         android:onClick="eliminarPaciente"
         android:text="@string/btnEliminar"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="@+id/nombre"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="518dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="242dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:text="Ficha Tecnica"
+        android:textSize="36sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/idPersona"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="7dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
