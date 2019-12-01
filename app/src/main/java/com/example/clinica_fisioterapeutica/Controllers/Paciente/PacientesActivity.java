@@ -95,6 +95,7 @@ public class PacientesActivity extends AppCompatActivity {
                     if(bundle.containsKey("viewFicha")) {
                         returnView.setData(Uri.parse(bundle.getString("viewFicha") + "-"+ lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona() + "-" + lista1[rvPersona.getChildAdapterPosition(view)].getNombre()));
                         setResult(RESULT_OK, returnView);
+                        Toast.makeText(PacientesActivity.this, "Seleccion desde ficha",Toast.LENGTH_LONG).show();
                         finish();
                         return;
                     } else {

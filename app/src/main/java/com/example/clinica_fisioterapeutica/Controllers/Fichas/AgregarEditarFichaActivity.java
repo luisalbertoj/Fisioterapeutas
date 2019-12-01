@@ -69,7 +69,7 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
     String idCliente;
     String idTipoProducto;
 
-
+    Intent intentNewActivity;
     Calendar calendar;
 
     @Override
@@ -118,7 +118,6 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
             diagnostico.setEnabled(true);
             btnEmpleado.setEnabled(true);
             btnCliente.setEnabled(true);
-            btnServicio.setEnabled(true);
         }
 
         paths = new String[]{"No tiene Archivos"};
@@ -129,6 +128,9 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(AgregarEditarFichaActivity.this);
         btnEliminarArchivo.setVisibility(View.INVISIBLE);
+
+        buscarTipoProducto();
+
     }
 
     public void cargarModelo(String idModelo) {
@@ -216,21 +218,21 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
     }
 
     public void buscarEmpleado(android.view.View view) {
-        Intent intentNewActivity = new Intent(AgregarEditarFichaActivity.this, PacientesActivity.class);
+        intentNewActivity = new Intent(AgregarEditarFichaActivity.this, PacientesActivity.class);
         Bundle b = new Bundle();
         b.putString("viewFicha","empleado");
         intentNewActivity.putExtras(b);
-        startActivity(intentNewActivity);
+        startActivityForResult(intentNewActivity, 1);
 
     }
     public void buscarCliente(android.view.View view) {
-        Intent intentNewActivity = new Intent(AgregarEditarFichaActivity.this, PacientesActivity.class);
+        intentNewActivity = new Intent(AgregarEditarFichaActivity.this, PacientesActivity.class);
         Bundle b = new Bundle();
         b.putString("viewFicha","cliente");
         intentNewActivity.putExtras(b);
-        startActivity(intentNewActivity);
+        startActivityForResult(intentNewActivity, 1);
     }
-    public void buscarTipoProducto(android.view.View view) {
+    public void buscarTipoProducto() {
         idTipoProducto = "3";
         servicio.setText("Luis");
     }
@@ -274,10 +276,11 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == RESULT_OK) {
+            Log.v("resultView", data.getDataString());
             String split[] = data.getDataString().split("-");
             if(split[0].equals("empleado")) {
+                Log.v("debug:", "entro hasta aqui");
                 idEmpleado = split[1];
                 empleado.setText(split[2]);
             } else if(split[0].equals("cliente")) {
