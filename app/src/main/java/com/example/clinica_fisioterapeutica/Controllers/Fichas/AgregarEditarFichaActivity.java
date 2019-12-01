@@ -58,6 +58,7 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
     private static String[] paths;
     String archivoEliminar = "";
 
+    Spinner spinnerServicio;
     Button btnEliminarArchivo;
     Button btnEliminar;
     Button btnEmpleado;
@@ -88,6 +89,8 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
         btnEliminarArchivo = findViewById(R.id.btnEliminarArchivo);
         btnAgregarArchivo = findViewById(R.id.btnAgregarArchivo);
         spinner = findViewById(R.id.spinnerArchivos);
+        servicio = findViewById(R.id.txtServicio);
+        spinnerServicio = findViewById(R.id.spinnerServicio);
 
         txtFile = findViewById(R.id.txtFile);
         initDialog();
@@ -101,6 +104,8 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
             btnEmpleado.setVisibility(View.INVISIBLE);
             btnCliente.setVisibility(View.INVISIBLE);
 
+            spinnerServicio.setVisibility(View.INVISIBLE);
+
         } else {
             btnEliminar.setVisibility(View.INVISIBLE);
             idFichaClinica.setVisibility(View.INVISIBLE);
@@ -109,6 +114,7 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
             txtFile.setVisibility(View.INVISIBLE);
             btnAgregarArchivo.setVisibility(View.INVISIBLE);
             motivoConsulta.setEnabled(true);
+            servicio.setVisibility(View.INVISIBLE);
             diagnostico.setEnabled(true);
             btnEmpleado.setEnabled(true);
             btnCliente.setEnabled(true);
