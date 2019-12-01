@@ -58,8 +58,8 @@ public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.AdapterP
         TextView tvNombre;
         public AdapterPersonaHolder(View view){
             super(view);
-            tvNombre = view.findViewById(R.id.txtIdPersonaItem);
-            tvIdPersona = view.findViewById(R.id.txtNombrePersonaItem);
+            tvNombre = view.findViewById(R.id.txtIdFichaClinica);
+            tvIdPersona = view.findViewById(R.id.txtObservacion);
         }
     }
 

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    tools:context=".Controllers.Turnos.TurnosActivity"
     android:orientation="vertical"
-    tools:context=".Controllers.Fichas.FichaActivity">
+    >
 
     <Button
         android:id="@+id/btnAgregar"
@@ -28,11 +28,10 @@
         android:textColorHint="@color/primaryTextColor" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFichaClinica"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    android:id="@+id/rvTurnos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-        />
+    />
 
-
-</LinearLayout>
+    </LinearLayout>

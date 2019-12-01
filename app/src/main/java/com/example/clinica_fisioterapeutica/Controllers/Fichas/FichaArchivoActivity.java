@@ -1,19 +1,13 @@
-package com.example.clinica_fisioterapeutica.Controllers;
+package com.example.clinica_fisioterapeutica.Controllers.Fichas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,10 +21,10 @@ import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.regex.Pattern;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,31 +62,32 @@ public class FichaArchivoActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == FILE_PICKER_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             String path = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
             File file = new File(path);
             if (path != null) {
                 Log.d("Path: ", path);
                 pdfPath = path;
                 Toast.makeText(this, "Picked file: " + path, Toast.LENGTH_LONG).show();
-                uploadFile(file);
                 txtFile.setText(path);
+                uploadFile(file);
+            } else {
+                Toast.makeText(FichaArchivoActivity.this, "Error al leer el archivo", Toast.LENGTH_SHORT).show();
             }
         }
 
     }
 
     public void uploadFile(File filee) {
-        File file = filee;
-        String id_archivo= "35";
         FichaArchivo ficha = new FichaArchivo();
-        ficha.setFile(file);
-        ficha.setIdFichaClinica(id_archivo);
-        ficha.setNombre(file.getName());
-        /*RequestBody requestBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
-        MultipartBody.Part body = MultipartBody.Part.createFormData("myfile", file.getName(), requestBody);
-        MultipartBody.Part nombre = MultipartBody.Part()*/
-        Call<ResponseFichaArchivo> call = ApiAdapter.getApiService().uploadFile(ficha);
+        ficha.setFile(filee);
+        ficha.setIdFichaClinica("35");
+        ficha.setNombre(filee.getName());
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/octet-stream"), ficha.getFile());
+        MultipartBody.Part file = MultipartBody.Part.createFormData("file", ficha.getNombre(), requestBody);
+        MultipartBody.Part nombre = MultipartBody.Part.createFormData("motivoConsulta", ficha.getNombre());
+        MultipartBody.Part idFichaClinica = MultipartBody.Part.createFormData("idFichaClinica", ficha.getIdFichaClinica());
+        Call<ResponseFichaArchivo> call = ApiAdapter.getApiService().uploadFile(file, nombre, idFichaClinica);
         call.enqueue(new Callback<ResponseFichaArchivo>() {
             @Override
             public void onResponse(Call<ResponseFichaArchivo> call,
@@ -109,12 +104,9 @@ public class FichaArchivoActivity extends AppCompatActivity {
 
     private void launchPicker() {
         new MaterialFilePicker()
-                .withActivity(this)
-                .withRequestCode(FILE_PICKER_REQUEST_CODE)
-                .withFilter(Pattern.compile(".*\\.pdf$"))
-                .withFilterDirectories(true)
+                .withActivity(FichaArchivoActivity.this)
+                .withRequestCode(1000)
                 .withHiddenFiles(true)
-                .withTitle("Select PDF file")
                 .start();
     }
 

@@ -9,6 +9,7 @@ import com.example.clinica_fisioterapeutica.Models.Persona;
 import com.example.clinica_fisioterapeutica.Models.ResponseFichaClinica;
 
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
+import com.example.clinica_fisioterapeutica.Models.ResponseReserva;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -17,6 +18,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 
@@ -79,7 +81,10 @@ public interface ApiServices {
             @Query("like") String like,
             @Query("ejemplo") String ejemplo
     );
-
+    @Headers({
+            "Content-Type: application/json",
+            "usuario:gustavo"
+    })
     @POST("fichaClinica")
     Call<FichaClinica> createFicha(@Body FichaClinica fichaClinica);
 
@@ -92,9 +97,29 @@ public interface ApiServices {
     );
 
     @Multipart
-    @POST("FichaArchivo/archivo")
+    @POST("fichaArchivo/archivo")
             Call<ResponseFichaArchivo> uploadFile(
-            @Body FichaArchivo fichaArchivo
+            @Part MultipartBody.Part file,
+            @Part MultipartBody.Part nombre,
+            @Part MultipartBody.Part idFichaClinica
             );
+
+    @GET("fichaArchivo")
+    Call<ResponseFichaArchivo> getFichaArchivo(
+            @Query("idFichaClinica") String idFichaClinica
+    );
+
+    @DELETE("fichaArchivo/{idFichaArchivo}")
+    Call<FichaArchivo> deleteFichaArchivo(
+            @Path("idFichaArchivo") String idFichaArchivo
+    );
     // -----------------------------------------------
+
+    // --------------- Rutas Turnos --------------
+
+    @GET("reserva")
+    Call<ResponseReserva> getReservas(
+            @Query("orderBy")String orderBy,
+            @Query("orderDir")String orderDir
+    );
 }

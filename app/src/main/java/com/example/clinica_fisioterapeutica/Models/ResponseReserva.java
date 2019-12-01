@@ -4,16 +4,16 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseFichaClinica {
+public class ResponseReserva {
     @SerializedName("lista")
-    private List<FichaClinica> lista;
+    private List<Turno> lista;
     private int totalDatos;
 
-    public List<FichaClinica> getLista() {
+    public List<Turno> getLista() {
         return lista;
     }
 
-    public void setLista(List<FichaClinica> lista) {
+    public void setLista(List<Turno> lista) {
         this.lista = lista;
     }
 

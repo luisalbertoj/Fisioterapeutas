@@ -3,7 +3,7 @@ package com.example.clinica_fisioterapeutica.Controllers.Paciente;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.app.Person;
+
 import java.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +13,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.clinica_fisioterapeutica.Controllers.MainActivity;
 import com.example.clinica_fisioterapeutica.Models.Persona;
-import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 import com.example.clinica_fisioterapeutica.R;
 import com.example.clinica_fisioterapeutica.Services.ApiAdapter;
 
@@ -42,16 +40,16 @@ public class AgregarEditarPersonaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_editar_persona);
-        idPersona = findViewById(R.id.idPersona);
-        nombre = findViewById(R.id.nombre);
-        apellido = findViewById(R.id.apellido);
-        telefono = findViewById(R.id.telefono);
-        email = findViewById(R.id.email);
-        ruc = findViewById(R.id.ruc);
-        cedula = findViewById(R.id.cedula);
+        idPersona = findViewById(R.id.idFichaClinica);
+        nombre = findViewById(R.id.motivoConsulta);
+        apellido = findViewById(R.id.diagnostico);
+        telefono = findViewById(R.id.observacion);
+        email = findViewById(R.id.empleado);
+        ruc = findViewById(R.id.cliente);
+        cedula = findViewById(R.id.producto);
         tipoPersona = findViewById(R.id.tipoPersona);
         fechaNacimiento = findViewById(R.id.fechaNacimiento);
-        btnEliminar = findViewById(R.id.btnEliminarPaciente);
+        btnEliminar = findViewById(R.id.btnEliminar);
 
         Bundle bundle = this.getIntent().getExtras();
         if(bundle != null && bundle.containsKey("idPersona")){
