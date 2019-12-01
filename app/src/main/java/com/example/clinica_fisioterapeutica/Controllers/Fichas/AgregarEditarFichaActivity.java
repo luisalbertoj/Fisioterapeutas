@@ -85,7 +85,6 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
         btnEliminar = findViewById(R.id.btnEliminar);
         btnEmpleado = findViewById(R.id.btnEmpleado);
         btnCliente = findViewById(R.id.btnCliente);
-        btnServicio = findViewById(R.id.btnServicio);
         btnEliminarArchivo = findViewById(R.id.btnEliminarArchivo);
         btnAgregarArchivo = findViewById(R.id.btnAgregarArchivo);
         spinner = findViewById(R.id.spinnerArchivos);
@@ -101,7 +100,6 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
             btnEliminar.setVisibility(View.VISIBLE);
             btnEmpleado.setVisibility(View.INVISIBLE);
             btnCliente.setVisibility(View.INVISIBLE);
-            btnServicio.setVisibility(View.INVISIBLE);
 
         } else {
             btnEliminar.setVisibility(View.INVISIBLE);
