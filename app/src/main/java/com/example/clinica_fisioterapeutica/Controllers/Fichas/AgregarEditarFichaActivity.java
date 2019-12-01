@@ -1,27 +1,43 @@
 package com.example.clinica_fisioterapeutica.Controllers.Fichas;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.clinica_fisioterapeutica.Controllers.Paciente.PacientesActivity;
+import com.example.clinica_fisioterapeutica.Models.FichaArchivo;
 import com.example.clinica_fisioterapeutica.Models.FichaClinica;
 import com.example.clinica_fisioterapeutica.Models.Persona;
+import com.example.clinica_fisioterapeutica.Models.ResponseFichaArchivo;
 import com.example.clinica_fisioterapeutica.Models.TipoProducto;
 import com.example.clinica_fisioterapeutica.R;
 import com.example.clinica_fisioterapeutica.Services.ApiAdapter;
+import com.github.barteksc.pdfviewer.PDFView;
+import com.nbsp.materialfilepicker.MaterialFilePicker;
+import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
+import java.io.File;
 import java.util.Calendar;
+import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AgregarEditarFichaActivity extends AppCompatActivity {
+public class AgregarEditarFichaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     TextView idFichaClinica;
     TextView motivoConsulta;
@@ -30,10 +46,24 @@ public class AgregarEditarFichaActivity extends AppCompatActivity {
     TextView empleado;
     TextView cliente;
     TextView servicio;
+
+    TextView txtFile;
+    private String pdfFileName;
+    private PDFView pdfView;
+    public ProgressDialog pDialog;
+    public static final int FILE_PICKER_REQUEST_CODE = 1;
+    private String pdfPath;
+
+    private Spinner spinner;
+    private static String[] paths;
+    String archivoEliminar = "";
+
+    Button btnEliminarArchivo;
     Button btnEliminar;
     Button btnEmpleado;
     Button btnCliente;
     Button btnServicio;
+    Button btnAgregarArchivo;
     String idEmpleado;
     String idCliente;
     String idTipoProducto;
@@ -56,6 +86,12 @@ public class AgregarEditarFichaActivity extends AppCompatActivity {
         btnEmpleado = findViewById(R.id.btnEmpleado);
         btnCliente = findViewById(R.id.btnCliente);
         btnServicio = findViewById(R.id.btnServicio);
+        btnEliminarArchivo = findViewById(R.id.btnEliminarArchivo);
+        btnAgregarArchivo = findViewById(R.id.btnAgregarArchivo);
+        spinner = findViewById(R.id.spinnerArchivos);
+
+        txtFile = findViewById(R.id.txtFile);
+        initDialog();
 
         Bundle bundle = this.getIntent().getExtras();
         if(bundle != null && bundle.containsKey("idFichaClinica")){
@@ -70,6 +106,10 @@ public class AgregarEditarFichaActivity extends AppCompatActivity {
         } else {
             btnEliminar.setVisibility(View.INVISIBLE);
             idFichaClinica.setVisibility(View.INVISIBLE);
+            btnEliminarArchivo.setVisibility(View.INVISIBLE);
+            spinner.setVisibility(View.INVISIBLE);
+            txtFile.setVisibility(View.INVISIBLE);
+            btnAgregarArchivo.setVisibility(View.INVISIBLE);
             motivoConsulta.setEnabled(true);
             diagnostico.setEnabled(true);
             btnEmpleado.setEnabled(true);
@@ -77,6 +117,14 @@ public class AgregarEditarFichaActivity extends AppCompatActivity {
             btnServicio.setEnabled(true);
         }
 
+        paths = new String[]{"No tiene Archivos"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AgregarEditarFichaActivity.this,
+                android.R.layout.simple_spinner_dropdown_item,paths);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(AgregarEditarFichaActivity.this);
+        btnEliminarArchivo.setVisibility(View.INVISIBLE);
     }
 
     public void cargarModelo(String idModelo) {
@@ -98,7 +146,7 @@ public class AgregarEditarFichaActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             servicio.setText(ficha.getIdTipoProducto().getIdTipoProducto());
                         }
-
+                        loadSpinner();
                         return;
                     } else {
                         Toast.makeText(AgregarEditarFichaActivity.this, "Ficha no encontrada", Toast.LENGTH_SHORT).show();
@@ -164,15 +212,170 @@ public class AgregarEditarFichaActivity extends AppCompatActivity {
     }
 
     public void buscarEmpleado(android.view.View view) {
-        idEmpleado = "4";
-        empleado.setText("Luis");
+        Intent intentNewActivity = new Intent(AgregarEditarFichaActivity.this, PacientesActivity.class);
+        Bundle b = new Bundle();
+        b.putString("viewFicha","empleado");
+        intentNewActivity.putExtras(b);
+        startActivity(intentNewActivity);
+
     }
     public void buscarCliente(android.view.View view) {
-        idCliente = "6";
-        cliente.setText("Luis");
+        Intent intentNewActivity = new Intent(AgregarEditarFichaActivity.this, PacientesActivity.class);
+        Bundle b = new Bundle();
+        b.putString("viewFicha","cliente");
+        intentNewActivity.putExtras(b);
+        startActivity(intentNewActivity);
     }
     public void buscarTipoProducto(android.view.View view) {
         idTipoProducto = "3";
         servicio.setText("Luis");
     }
+
+    public void eliminarArchivoFicha(android.view.View view) {
+        if(archivoEliminar.equals("")) {
+            return;
+        }
+        Call<FichaArchivo> call = ApiAdapter.getApiService().deleteFichaArchivo(archivoEliminar);
+        call.enqueue(new Callback<FichaArchivo>() {
+            @Override
+            public void onResponse(Call<FichaArchivo> call, Response<FichaArchivo> response) {
+                Toast.makeText(AgregarEditarFichaActivity.this,"Eliminacion correcta",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<FichaArchivo> call, Throwable t) {
+                Log.w("warning",t.getCause());
+                Toast.makeText(AgregarEditarFichaActivity.this,"Error: " + t.getCause(),Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+        archivoEliminar = "";
+    }
+
+    public void launchPicker(android.view.View view) {
+        new MaterialFilePicker()
+                .withActivity(AgregarEditarFichaActivity.this)
+                .withRequestCode(1000)
+                .withHiddenFiles(true)
+                .start();
+    }
+
+    protected void initDialog() {
+        pDialog = new ProgressDialog(AgregarEditarFichaActivity.this);
+        pDialog.setMessage(getString(R.string.msg_loading));
+        pDialog.setCancelable(true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            String split[] = data.getDataString().split("-");
+            if(split[0].equals("empleado")) {
+                idEmpleado = split[1];
+                empleado.setText(split[2]);
+            } else if(split[0].equals("cliente")) {
+                idCliente = split[1];
+                cliente.setText(split[2]);
+            } else if(split[0].equals("servicio")) {
+                idTipoProducto = split[1];
+                servicio.setText(split[2]);
+            } else {
+                String path = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
+                File file = new File(path);
+                if (path != null) {
+                    Log.d("Path: ", path);
+                    pdfPath = path;
+                    Toast.makeText(this, "Picked file: " + path, Toast.LENGTH_LONG).show();
+                    txtFile.setText(path);
+                    uploadFile(file);
+                } else {
+                    Toast.makeText( AgregarEditarFichaActivity.this, "Error al leer el archivo", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+    }
+
+    public void uploadFile(File filee) {
+        FichaArchivo ficha = new FichaArchivo();
+        ficha.setFile(filee);
+        ficha.setIdFichaClinica(idFichaClinica.getText().toString());
+        ficha.setNombre(filee.getName());
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/octet-stream"), ficha.getFile());
+        MultipartBody.Part file = MultipartBody.Part.createFormData("file", ficha.getNombre(), requestBody);
+        MultipartBody.Part nombre = MultipartBody.Part.createFormData("motivoConsulta", ficha.getNombre());
+        MultipartBody.Part idFichaClinica = MultipartBody.Part.createFormData("idFichaClinica", ficha.getIdFichaClinica());
+        Call<ResponseFichaArchivo> call = ApiAdapter.getApiService().uploadFile(file, nombre, idFichaClinica);
+        call.enqueue(new Callback<ResponseFichaArchivo>() {
+            @Override
+            public void onResponse(Call<ResponseFichaArchivo> call,
+                                   Response<ResponseFichaArchivo> response) {
+                Toast.makeText( AgregarEditarFichaActivity.this, "Carga del archivo exitosa", Toast.LENGTH_SHORT).show();
+                Log.v("Upload", "success");
+                loadSpinner();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseFichaArchivo> call, Throwable t) {
+                Toast.makeText( AgregarEditarFichaActivity.this, "Upload error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Upload error:", t.getMessage());
+            }
+        });
+    }
+
+    public void loadSpinner() {
+        if(!idFichaClinica.getText().toString().equals("")) {
+            Call<ResponseFichaArchivo> call= ApiAdapter.getApiService().getFichaArchivo(idFichaClinica.getText().toString());
+            call.enqueue(new Callback<ResponseFichaArchivo>() {
+                @Override
+                public void onResponse(Call<ResponseFichaArchivo> call, Response<ResponseFichaArchivo> response) {
+                    if (response.isSuccessful()) {
+                        List<FichaArchivo> fichas = response.body().getLista();
+                        if (fichas != null && (response.body().getTotalDatos() != 0)) {
+                            Log.v("debug:", "entro a poblar");
+                            paths = new String[fichas.size()];
+                            int i = 0;
+                            for (FichaArchivo ficha: fichas) {
+                                paths[i] = ficha.getIdFichaArchivo() + "-" + ficha.getNombre();
+                                i++;
+                            }
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(AgregarEditarFichaActivity.this,
+                                    android.R.layout.simple_spinner_dropdown_item,paths);
+
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinner.setAdapter(adapter);
+                            spinner.setOnItemSelectedListener(AgregarEditarFichaActivity.this);
+                            btnEliminarArchivo.setVisibility(View.VISIBLE);
+                        } else {
+                            Log.v("debug:", "entro al else");
+                            paths = new String[]{"No tiene Archivos"};
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseFichaArchivo> call, Throwable t) {
+                    Log.w("warning",t.getCause());
+                    paths = new String[]{"No tiene Archivos"};
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+        String split[] = paths[position].split("-");
+        archivoEliminar = split[0];
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // TODO Auto-generated method stub
+    }
+
+
 }

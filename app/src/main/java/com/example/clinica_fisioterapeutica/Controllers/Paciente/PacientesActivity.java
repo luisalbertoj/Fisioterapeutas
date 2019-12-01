@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,6 +32,7 @@ public class PacientesActivity extends AppCompatActivity {
     TextView buscador;
     Button btnAgregar;
     Bundle bundle;
+    Intent returnView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,7 @@ public class PacientesActivity extends AppCompatActivity {
         try {
             if(bundle.containsKey("viewFicha")) {
                 btnAgregar.setVisibility(View.INVISIBLE);
+                returnView = new Intent();
             }
         } catch (Exception e) {
 
@@ -90,7 +93,10 @@ public class PacientesActivity extends AppCompatActivity {
                 Intent intentNewActivity;
                 try {
                     if(bundle.containsKey("viewFicha")) {
-                        intentNewActivity = new Intent(PacientesActivity.this, FichaActivity.class);
+                        returnView.setData(Uri.parse(bundle.getString("viewFicha") + "-"+ lista1[rvPersona.getChildAdapterPosition(view)].getIdPersona() + "-" + lista1[rvPersona.getChildAdapterPosition(view)].getNombre()));
+                        setResult(RESULT_OK, returnView);
+                        finish();
+                        return;
                     } else {
                         intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
 

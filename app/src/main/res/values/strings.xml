@@ -38,5 +38,6 @@
     <string name="btnEmpleado">Fisioterapeuta</string>
     <string name="btnPaciente">Paciente</string>
     <string name="btnServicio">Servicio</string>
+    <string name="btnEliminarArchivo">Eliminar archivo</string>
 
 </resources>

@@ -102,5 +102,15 @@ public interface ApiServices {
             @Part MultipartBody.Part nombre,
             @Part MultipartBody.Part idFichaClinica
             );
+
+    @GET("fichaArchivo")
+    Call<ResponseFichaArchivo> getFichaArchivo(
+            @Query("idFichaClinica") String idFichaClinica
+    );
+
+    @DELETE("fichaArchivo/{idFichaArchivo}")
+    Call<FichaArchivo> deleteFichaArchivo(
+            @Path("idFichaArchivo") String idFichaArchivo
+    );
     // -----------------------------------------------
 }
