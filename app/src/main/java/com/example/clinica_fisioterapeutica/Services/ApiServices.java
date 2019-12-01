@@ -10,13 +10,14 @@ import com.example.clinica_fisioterapeutica.Models.ResponseFichaClinica;
 
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 import com.example.clinica_fisioterapeutica.Models.ResponseReserva;
+import com.example.clinica_fisioterapeutica.Models.Reserva;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
@@ -120,6 +121,42 @@ public interface ApiServices {
     @GET("reserva")
     Call<ResponseReserva> getReservas(
             @Query("orderBy")String orderBy,
-            @Query("orderDir")String orderDir
+            @Query("orderDir")String orderDir,
+            @Query("ejemplo") String ejemplo
+    );
+    @GET("reserva/{idReserva}")
+    Call<Reserva> getReserva(
+            @Path("idReserva") String idReserva
+    );
+    @GET("reserva")
+    Call<ResponseReserva> getReservasLike(
+            @Query("orderBy")String orderBy,
+            @Query("orderDir")String orderDir,
+            @Query("like") String like,
+            @Query("ejemplo") String ejemplo
+    );
+    @Headers({
+            "Content-Type: application/json",
+            "usuario:gustavo"
+    })
+    @POST("reserva")
+    Call<Reserva> createReserva(@Body Reserva reserva);
+
+    @Headers({
+            "Content-Type: application/json"
+    })
+    @PUT("reserva")
+    Call<Reserva> updateReserva(@Body Reserva reserva);
+
+    @DELETE("reserva/{idReserva}")
+    Call<Reserva> deleteReserva(
+            @Path("idReserva") String idReserva
+
+    );
+    @GET("persona/{idPersona}/agenda")
+    Call<List<Reserva>> getAgenda(
+            @Path("idPersona") String idPersona,
+            @Query("fecha") String fecha,
+            @Query("disponible") String disponible
     );
 }

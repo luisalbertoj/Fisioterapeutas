@@ -7,7 +7,7 @@
 
     <string name="agregar_archivo">Agregar Archivo</string>
 
-    <string name="btnCrearPersona">Agregar o Editar Paciente</string>
+    <string name="btnCrearPersona">Agregar</string>
     <string name="btnBuscar">Buscar</string>
     <string name="tvBuscadorPacientes">Ingresa el nombre o apellido del paciente</string>
     <string name="textId">ID Persona</string>
@@ -39,5 +39,7 @@
     <string name="btnPaciente">Paciente</string>
     <string name="btnServicio">Servicio</string>
     <string name="btnEliminarArchivo">Eliminar archivo</string>
+    <string name="flagAsistir">Asistio</string>
+    <string name="titleHorarios">Seleccione uno de los horarios disponibles</string>
 
 </resources>

@@ -8,20 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.clinica_fisioterapeutica.Controllers.Paciente.AdapterPersona;
-import com.example.clinica_fisioterapeutica.Models.Turno;
+import com.example.clinica_fisioterapeutica.Models.Reserva;
 import com.example.clinica_fisioterapeutica.R;
 
 public class AdapterTurno extends RecyclerView.Adapter<AdapterTurno.AdapterTurnoHolder> implements View.OnClickListener{
 
     private View.OnClickListener listener;
-    Turno[] lista;
+    Reserva[] lista;
 
     public void setListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
-    public AdapterTurno(Turno[] l){
+    public AdapterTurno(Reserva[] l){
         super();
         lista=l;
     }
@@ -42,9 +41,12 @@ public class AdapterTurno extends RecyclerView.Adapter<AdapterTurno.AdapterTurno
 
     @Override
     public void onBindViewHolder(@NonNull AdapterTurno.AdapterTurnoHolder holder, int position) {
-        holder.tvhoraInicioCadena.setText(lista[position].getHoraInicio());
-        holder.tvfechaCadena.setText(lista[position].getFecha());
-        holder.tvhoraFinCadena.setText(lista[position].getHoraFin());
+
+
+        holder.tvfechaCadena.setText("---------" + lista[position].getFecha() + "--------");
+        holder.tvFisioterapeuta.setText("---------" + lista[position].getIdEmpleado().getNombre() + "--------");
+        holder.tvhoraInicioCadena.setText("Hora Inicio: " + lista[position].getHoraInicio());
+        holder.tvhoraFinCadena.setText("Hora Fin: " + lista[position].getHoraFin());
 
     }
 
@@ -57,12 +59,14 @@ public class AdapterTurno extends RecyclerView.Adapter<AdapterTurno.AdapterTurno
         TextView tvfechaCadena;
         TextView tvhoraInicioCadena;
         TextView tvhoraFinCadena;
+        TextView tvFisioterapeuta;
 
         public AdapterTurnoHolder(@NonNull View itemView) {
             super(itemView);
             tvfechaCadena = itemView.findViewById(R.id.txtfechaCadena);
             tvhoraFinCadena = itemView.findViewById(R.id.txthoraFinCadena);
             tvhoraInicioCadena = itemView.findViewById(R.id.txthoraInicioCadena);
+            tvFisioterapeuta = itemView.findViewById(R.id.txtFisioterapeuta);
         }
     }
 }

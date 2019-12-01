@@ -13,15 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-
-        <activity android:name=".Controllers.Fichas.FichaArchivoActivity"></activity>
-
-        <activity android:name=".Controllers.Fichas.FichaActivity"></activity>
+        <activity android:name=".Controllers.Turnos.AgregarReservaActivity"></activity>
+        <activity android:name=".Controllers.Turnos.EditarReservaActivity" />
+        <activity android:name=".Controllers.Fichas.FichaArchivoActivity" />
+        <activity android:name=".Controllers.Fichas.FichaActivity" />
         <activity android:name=".Controllers.Fichas.AgregarEditarFichaActivity" />
-        <activity android:name=".Controllers.FichaArchivoActivity"></activity>
-        <activity android:name=".Controllers.Turnos.TurnosActivity"></activity>
-        <activity android:name=".Controllers.Fichas.FichasActivity"></activity>
+        <activity android:name=".Controllers.FichaArchivoActivity" />
+        <activity android:name=".Controllers.Turnos.TurnosActivity" />
+        <activity android:name=".Controllers.Fichas.FichasActivity" />
         <activity android:name=".Controllers.MenuActivity" />
         <activity android:name=".Controllers.Paciente.AgregarEditarPersonaActivity" />
         <activity android:name=".Controllers.Paciente.PacientesActivity" />
