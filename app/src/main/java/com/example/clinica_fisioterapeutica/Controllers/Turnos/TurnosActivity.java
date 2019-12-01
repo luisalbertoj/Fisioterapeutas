@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -12,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichasActivity;
+import com.example.clinica_fisioterapeutica.Controllers.Fichas.AgregarEditarFichaActivity;
+import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichaActivity;
 import com.example.clinica_fisioterapeutica.Controllers.Paciente.AdapterPersona;
 import com.example.clinica_fisioterapeutica.Controllers.Paciente.AgregarEditarPersonaActivity;
 import com.example.clinica_fisioterapeutica.Controllers.Paciente.PacientesActivity;
@@ -34,6 +36,7 @@ import retrofit2.Response;
 public class TurnosActivity extends AppCompatActivity {
     RecyclerView rvTurno;
     Bundle bundle;
+    TextView buscador;
     Button btnAgregar;
 
     @Override
@@ -44,13 +47,15 @@ public class TurnosActivity extends AppCompatActivity {
         LinearLayoutManager layRec =  new LinearLayoutManager(this);
         rvTurno.setLayoutManager(layRec);
         rvTurno.setHasFixedSize(true);
+        buscador = findViewById(R.id.tvBuscar);
+        btnAgregar = findViewById(R.id.btnAgregar);
         bundle = this.getIntent().getExtras();
         try {
-            if(bundle.containsKey("viewFicha")) {
+            if(bundle.containsKey("viewTurno")) {
                 btnAgregar.setVisibility(View.INVISIBLE);
             }
         } catch (Exception e) {
-
+            Log.v("Bundle", e.getLocalizedMessage());
         }
     }
 
@@ -61,13 +66,7 @@ public class TurnosActivity extends AppCompatActivity {
         callTurnos.enqueue(new Callback<ResponseReserva>() {
             @Override
             public void onResponse(Call<ResponseReserva> call, Response<ResponseReserva> response) {
-                List<Turno> myList = new ArrayList<Turno>();
-                Turno t = new Turno();
-                t.setFecha("fecha");
-                t.setHoraFin("horafin");
-                t.setHoraInicio("horainicio");
-                myList.add(t);
-                cargarLista(myList);
+                cargarLista(response.body().getLista());
             }
 
             @Override
@@ -75,6 +74,11 @@ public class TurnosActivity extends AppCompatActivity {
                 Log.w("warning",t.getCause().toString());
             }
         });
+    }
+
+    public void irAgregarEditarPersona(View view) {
+        Intent intentNewActivity = new Intent(TurnosActivity.this, AgregarEditarFichaActivity.class);
+        startActivity(intentNewActivity);
     }
 
     private void cargarLista(List<Turno> turnos){
@@ -94,7 +98,7 @@ public class TurnosActivity extends AppCompatActivity {
                 Intent intentNewActivity;
                 try {
                     if(bundle.containsKey("viewFicha")) {
-                        intentNewActivity = new Intent(TurnosActivity.this, FichasActivity.class);
+                        intentNewActivity = new Intent(TurnosActivity.this, FichaActivity.class);
                     } else {
                         intentNewActivity = new Intent(TurnosActivity.this, AgregarEditarPersonaActivity.class);
 

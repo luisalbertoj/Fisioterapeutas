@@ -13,6 +13,12 @@ public class Persona {
     private String tipoPersona;
     private String fechaNacimiento;
 
+    public Persona() {
+    }
+
+    public Persona(String idPersona) {
+        this.idPersona = idPersona;
+    }
 
     public String getIdPersona() {
         return idPersona;

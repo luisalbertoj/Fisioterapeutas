@@ -1,7 +1,9 @@
 package com.example.clinica_fisioterapeutica.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -26,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        campoNombreUsuario=findViewById(R.id.txtNombreUsuario);
-        campoPassword=findViewById(R.id.txtPassword);
+        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 0);
+
+        campoNombreUsuario=findViewById(R.id.usuario);
+        campoPassword=findViewById(R.id.contraseña
+        );
     }
 
     public void ingresar(android.view.View vista) {

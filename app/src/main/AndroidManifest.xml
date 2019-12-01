@@ -15,6 +15,10 @@
         android:usesCleartextTraffic="true">
 
 
+        <activity android:name=".Controllers.Fichas.FichaArchivoActivity"></activity>
+
+        <activity android:name=".Controllers.Fichas.FichaActivity"></activity>
+        <activity android:name=".Controllers.Fichas.AgregarEditarFichaActivity" />
         <activity android:name=".Controllers.FichaArchivoActivity"></activity>
         <activity android:name=".Controllers.Turnos.TurnosActivity"></activity>
         <activity android:name=".Controllers.Fichas.FichasActivity"></activity>

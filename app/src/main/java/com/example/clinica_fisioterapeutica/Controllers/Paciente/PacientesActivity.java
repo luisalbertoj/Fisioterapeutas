@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichasActivity;
+import com.example.clinica_fisioterapeutica.Controllers.Fichas.FichaActivity;
 import com.example.clinica_fisioterapeutica.Models.Persona;
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 import com.example.clinica_fisioterapeutica.R;
@@ -90,7 +90,7 @@ public class PacientesActivity extends AppCompatActivity {
                 Intent intentNewActivity;
                 try {
                     if(bundle.containsKey("viewFicha")) {
-                        intentNewActivity = new Intent(PacientesActivity.this, FichasActivity.class);
+                        intentNewActivity = new Intent(PacientesActivity.this, FichaActivity.class);
                     } else {
                         intentNewActivity = new Intent(PacientesActivity.this, AgregarEditarPersonaActivity.class);
 

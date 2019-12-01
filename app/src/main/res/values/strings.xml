@@ -27,5 +27,16 @@
     <string name="btnSalir">Salir</string>
     <string name="btnFecha">Fecha</string>
     <string name="btnEliminar">Eliminar</string>
+    <string name="msg_loading">Selecciona pdf</string>
+    <string name="txtIdFichaClinica">ID Ficha clinica</string>
+    <string name="txtMotivoConsulta">Motivo consulta</string>
+    <string name="txtDiagnostico">Diagnostico</string>
+    <string name="txtObservacion">Observaciones</string>
+    <string name="txtEmpleado">Nombre del fisioterapeuta</string>
+    <string name="txtPaciente">Nombre del paciente</string>
+    <string name="txtProducto">Servicio</string>
+    <string name="btnEmpleado">Fisioterapeuta</string>
+    <string name="btnPaciente">Paciente</string>
+    <string name="btnServicio">Servicio</string>
 
 </resources>
