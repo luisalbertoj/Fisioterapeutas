@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Controllers.Turnos.AgregarReservaActivity"></activity>
+        <activity android:name=".Controllers.Fichas.FiltroActivity"></activity>
+        <activity android:name=".Controllers.Turnos.AgregarReservaActivity" />
         <activity android:name=".Controllers.Turnos.EditarReservaActivity" />
         <activity android:name=".Controllers.Fichas.FichaArchivoActivity" />
         <activity android:name=".Controllers.Fichas.FichaActivity" />

@@ -41,5 +41,6 @@
     <string name="btnEliminarArchivo">Eliminar archivo</string>
     <string name="flagAsistir">Asistio</string>
     <string name="titleHorarios">Seleccione uno de los horarios disponibles</string>
+    <string name="btnReserva">Reservas</string>
 
 </resources>

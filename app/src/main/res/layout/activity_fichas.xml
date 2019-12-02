@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Controllers.Fichas.FichasActivity">
+    tools:context=".Controllers.Fichas.FichaActivity">
 
     <Button
         android:id="@+id/btnAgregar"
@@ -25,7 +25,7 @@
         android:inputType="textPersonName" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPersona"
+        android:id="@+id/rvFicha"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 

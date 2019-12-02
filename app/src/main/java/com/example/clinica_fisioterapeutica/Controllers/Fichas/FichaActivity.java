@@ -36,7 +36,7 @@ public class FichaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fichas);
-        rvFichaClinica =findViewById(R.id.rvFichaClinica);
+        rvFichaClinica =findViewById(R.id.rvFicha);
         LinearLayoutManager layRec =  new LinearLayoutManager(this);
         rvFichaClinica.setLayoutManager(layRec);
         rvFichaClinica.setHasFixedSize(true);
