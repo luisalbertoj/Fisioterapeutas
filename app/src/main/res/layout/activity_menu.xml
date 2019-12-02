@@ -11,11 +11,7 @@
         android:id="@+id/btnSalir"
         android:layout_width="171dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="57dp"
         android:background="#F31206"
         android:onClick="openSalir"
         android:text="@string/btnSalir"
@@ -24,19 +20,15 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFichas" />
 
     <Button
         android:id="@+id/btnPacientes"
         android:layout_width="235dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
+        android:layout_height="0dp"
         android:layout_marginTop="52dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="25dp"
         android:background="#5870cb"
         android:onClick="openPacientes"
         android:text="@string/btnPacientes"
@@ -49,30 +41,23 @@
 
     <Button
         android:id="@+id/btnReserva"
-        android:layout_width="243dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="19dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
         android:background="#5870cb"
         android:onClick="openTurnos"
         android:text="@string/btnReserva"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/btnFichas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/btnFichas"
+        app:layout_constraintStart_toStartOf="@+id/btnFichas"
+        app:layout_constraintTop_toBottomOf="@+id/btnPacientes" />
 
     <Button
         android:id="@+id/btnFichas"
         android:layout_width="243dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="71dp"
         android:background="#5870cb"
         android:onClick="openFichas"
@@ -81,6 +66,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSalir"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReserva" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
