@@ -20,7 +20,7 @@ public class FiltroActivity extends AppCompatActivity {
 
     }
     public void buscarCliente(android.view.View view) {
-        
+
     }
 
 }
