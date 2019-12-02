@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         campoNombreUsuario=findViewById(R.id.usuario);
         campoPassword=findViewById(R.id.contraseña
         );
+        getSupportActionBar().hide();
     }
 
     public void ingresar(android.view.View vista) {
