@@ -4,22 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondo1"
+    android:background="@mipmap/opc1"
     tools:context=".Controllers.Paciente.AgregarEditarPersonaActivity">
 
-    <EditText
-        android:id="@+id/idFichaClinica"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="@string/textId"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnFecha"
@@ -31,59 +18,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tipoPersona" />
 
     <EditText
-        android:id="@+id/tipoPersona"
+        android:id="@+id/motivoConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:ems="10"
-        android:enabled="true"
-        android:hint="@string/textTipoPersona"
+        android:hint="@string/textNombre"
         android:inputType="textPersonName"
         android:text="FISICA"
         app:layout_constraintStart_toStartOf="@+id/producto"
         app:layout_constraintTop_toBottomOf="@+id/producto" />
 
     <EditText
-        android:id="@+id/producto"
+        android:id="@+id/idFichaClinica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="43dp"
         android:ems="10"
-        android:hint="@string/textCedula"
+        android:enabled="false"
+        android:hint="@string/textId"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/cliente"
         app:layout_constraintTop_toBottomOf="@+id/cliente" />
-
-    <EditText
-        android:id="@+id/cliente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="@string/textRuc"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/empleado"
-        app:layout_constraintTop_toTopOf="@+id/empleado" />
-
-    <EditText
-        android:id="@+id/empleado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/textEmail"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/observacion"
-        app:layout_constraintTop_toBottomOf="@+id/observacion" />
-
-    <EditText
-        android:id="@+id/observacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:ems="10"
-        android:hint="@string/textTelefono"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/diagnostico"
-        app:layout_constraintTop_toBottomOf="@+id/diagnostico" />
 
     <EditText
         android:id="@+id/diagnostico"
@@ -93,16 +50,67 @@
         android:ems="10"
         android:hint="@string/textApellido"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/observacion"
         app:layout_constraintStart_toStartOf="@+id/motivoConsulta"
-        app:layout_constraintTop_toTopOf="@+id/motivoConsulta" />
+        app:layout_constraintTop_toBottomOf="@+id/idFichaClinica" />
 
     <EditText
-        android:id="@+id/motivoConsulta"
+        android:id="@+id/observacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:ems="10"
+        android:hint="@string/textTelefono"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/cliente"
+        app:layout_constraintStart_toStartOf="@+id/diagnostico"
+        app:layout_constraintTop_toBottomOf="@+id/diagnostico" />
+
+    <EditText
+        android:id="@+id/empleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="@string/textEmail"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/observacion"
+        app:layout_constraintTop_toBottomOf="@+id/observacion" />
+
+    <EditText
+        android:id="@+id/cliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="@string/textRuc"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/diagnostico"
+        app:layout_constraintTop_toBottomOf="@+id/diagnostico" />
+
+    <EditText
+        android:id="@+id/producto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:ems="10"
-        android:hint="@string/textNombre"
+        android:hint="@string/textCedula"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/motivoConsulta"
+        app:layout_constraintTop_toTopOf="@+id/motivoConsulta" />
+
+    <EditText
+        android:id="@+id/tipoPersona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="@string/textTipoPersona"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/idFichaClinica"
         app:layout_constraintTop_toTopOf="@+id/idFichaClinica" />
@@ -111,6 +119,9 @@
         android:id="@+id/fechaNacimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/textFechaNacimiento"
