@@ -10,7 +10,7 @@
     <Button
         android:id="@+id/btnSalir"
         android:layout_width="171dp"
-        android:layout_height="104dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#F31206"
         android:onClick="openSalir"
@@ -25,7 +25,7 @@
     <Button
         android:id="@+id/btnPacientes"
         android:layout_width="407dp"
-        android:layout_height="93dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#5870cb"
         android:onClick="openPacientes"
@@ -38,8 +38,8 @@
 
     <Button
         android:id="@+id/btnReserva"
-        android:layout_width="406dp"
-        android:layout_height="99dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#5870cb"
         android:onClick="openTurnos"
@@ -53,7 +53,7 @@
     <Button
         android:id="@+id/btnFichas"
         android:layout_width="413dp"
-        android:layout_height="83dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#5870cb"
         android:onClick="openFichas"

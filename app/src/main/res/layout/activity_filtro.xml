@@ -6,4 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.Fichas.FiltroActivity">
 
+    <Spinner
+        android:id="@+id/spinnerServicio2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerServicio3"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerServicio3"
+        app:layout_constraintStart_toStartOf="@+id/empleado2"
+        app:layout_constraintTop_toBottomOf="@+id/empleado2" />
+
+    <Spinner
+        android:id="@+id/spinnerServicio3"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="305dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerServicio2" />
+
+    <Button
+        android:id="@+id/btnEmpleado3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="466dp"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="buscarEmpleado"
+        android:text="@string/btnEmpleado"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/empleado2"
+        app:layout_constraintTop_toBottomOf="@+id/btnCliente3" />
+
+    <Button
+        android:id="@+id/btnCliente3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="buscarCliente"
+        android:text="@string/btnPaciente"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/btnEmpleado3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cliente3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/cliente3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="9dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/txtPaciente"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/empleado2"
+        app:layout_constraintEnd_toStartOf="@+id/btnCliente3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/empleado2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="27dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/txtEmpleado"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerServicio2"
+        app:layout_constraintEnd_toStartOf="@+id/btnEmpleado3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cliente3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
