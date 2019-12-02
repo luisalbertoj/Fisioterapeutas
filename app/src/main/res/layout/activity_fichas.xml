@@ -15,14 +15,12 @@
         android:onClick="irAgregarEditarPersona"
         android:text="@string/btnCrearPersona" />
 
-    <EditText
-        android:id="@+id/tvBuscarPaciente"
+    <Button
+        android:id="@+id/button3"
         android:layout_width="match_parent"
-        android:layout_height="89dp"
-        android:baselineAligned="false"
-        android:ems="10"
-        android:hint="@string/tvBuscadorPacientes"
-        android:inputType="textPersonName" />
+        android:layout_height="wrap_content"
+        android:onClick="filtrar"
+        android:text="@string/btnFiltro" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFicha"

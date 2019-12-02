@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clinica_fisioterapeutica.Controllers.Paciente.PacientesActivity;
+import com.example.clinica_fisioterapeutica.Controllers.Turnos.AgregarReservaActivity;
 import com.example.clinica_fisioterapeutica.Models.FichaClinica;
 import com.example.clinica_fisioterapeutica.Models.Persona;
 import com.example.clinica_fisioterapeutica.Models.ResponseFichaClinica;
@@ -28,6 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FichaActivity extends AppCompatActivity {
+    Intent intentNewActivity;
     RecyclerView rvFichaClinica;
     TextView buscador;
     Button btnAgregar;
@@ -42,7 +45,6 @@ public class FichaActivity extends AppCompatActivity {
         rvFichaClinica.setHasFixedSize(true);
         buscador = findViewById(R.id.tvBuscar);
         btnAgregar = findViewById(R.id.btnAgregar);
-        FichaActivity.this.buscar();
         bundle = this.getIntent().getExtras();
         try {
             if(bundle.containsKey("viewFicha")) {
@@ -51,11 +53,9 @@ public class FichaActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.v("Bundle", e.getLocalizedMessage());
         }
-
+    cargarr();
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
+    public void cargarr() {
         Call<ResponseFichaClinica> callFichas = ApiAdapter.getApiService().getFichas("idFichaClinica","dec");
         callFichas.enqueue(new Callback<ResponseFichaClinica>() {
             @Override
@@ -69,7 +69,24 @@ public class FichaActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+    public void cargarModelo(String query) {
+        Call<ResponseFichaClinica> callFichas = ApiAdapter.getApiService().getFichaLike("idFichaClinica","dec", query);
+        callFichas.enqueue(new Callback<ResponseFichaClinica>() {
+            @Override
+            public void onResponse(Call<ResponseFichaClinica> call, Response<ResponseFichaClinica> response) {
+                cargarLista(response.body().getLista());
+            }
 
+            @Override
+            public void onFailure(Call<ResponseFichaClinica> call, Throwable t) {
+                Log.w("warning",t.getCause().toString());
+            }
+        });
+    }
     public void irAgregarEditarPersona(View view) {
         Intent intentNewActivity = new Intent(FichaActivity.this, AgregarEditarFichaActivity.class);
         startActivity(intentNewActivity);
@@ -107,57 +124,23 @@ public class FichaActivity extends AppCompatActivity {
         });
     }
 
-    public void buscar() {
-        buscador.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Call<ResponseFichaClinica> callFichas = ApiAdapter.getApiService().getFichaLike(
-                        "idFichaClinica","asc", "S",
-                        constructQuery());
-                callFichas.enqueue(new Callback<ResponseFichaClinica>() {
-                    @Override
-                    public void onResponse(Call<ResponseFichaClinica> call, Response<ResponseFichaClinica> response) {
-                        cargarLista(response.body().getLista());
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseFichaClinica> call, Throwable t) {
-                        Log.w("warning",t.getCause().toString());
-                    }
-                });
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // TODO Auto-generated method stub
-            }
-        });
-
+    public void filtrar(android.view.View view) {
+        intentNewActivity = new Intent(FichaActivity.this, FiltroActivity.class);
+        Bundle b = new Bundle();
+        b.putString("viewFicha","empleado");
+        intentNewActivity.putExtras(b);
+        startActivityForResult(intentNewActivity, 1);
     }
 
-    private String constructQuery() {
-        String query = "";
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Log.v("resultView", data.getDataString());
+            cargarModelo(data.getDataString());
 
-         query = "{\n" +
-                 "\t\"fechaDesdeCadena\": \"20190901\",\n" +
-                 "\t\"fechaHastaCadena\": \"20190901\",\n" +
-                 "\t\"idCliente\": {\n" +
-                 "\t\t\"idFichaClinica\": 7\n" +
-                 "\t},\n" +
-                 "\t\"idEmpleado\": {\n" +
-                 "\t\t\"idFichaClinica\": 3\n" +
-                 "\t},\n" +
-                 "\t\"idTipoProducto\": {\n" +
-                 "\t\t\"idTipoProducto\": 4\n" +
-                 "\t}\n" +
-                 "}";
+        }
 
-        return query;
     }
 
 }

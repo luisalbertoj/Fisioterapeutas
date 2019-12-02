@@ -7,12 +7,12 @@
     tools:context=".Controllers.Fichas.FiltroActivity">
 
     <EditText
-        android:id="@+id/fechaNacimiento3"
+        android:id="@+id/fechaFin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:enabled="false"
-        android:hint="@string/textFechaNacimiento"
+        android:hint="@string/txtFechaFin"
         android:inputType="textPersonName"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnFecha3"
         app:layout_constraintStart_toEndOf="@+id/btnFecha3" />
@@ -24,18 +24,18 @@
         android:layout_marginStart="11dp"
         android:layout_marginLeft="11dp"
         android:layout_marginTop="10dp"
-        android:onClick="openDataPicker"
+        android:onClick="openDataPicker2"
         android:text="@string/btnFecha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFecha2" />
 
     <EditText
-        android:id="@+id/fechaNacimiento2"
+        android:id="@+id/fechaInicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:enabled="false"
-        android:hint="@string/textFechaNacimiento"
+        android:hint="@string/textFechaInicio"
         android:inputType="textPersonName"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnFecha2"
         app:layout_constraintStart_toEndOf="@+id/btnFecha2" />
@@ -60,8 +60,8 @@
         android:layout_marginBottom="37dp"
         app:layout_constraintBottom_toTopOf="@+id/spinnerSubCategoria"
         app:layout_constraintEnd_toEndOf="@+id/spinnerSubCategoria"
-        app:layout_constraintStart_toStartOf="@+id/empleado2"
-        app:layout_constraintTop_toBottomOf="@+id/btnEmpleado3" />
+        app:layout_constraintStart_toStartOf="@+id/empleado"
+        app:layout_constraintTop_toBottomOf="@+id/btnEmpleado" />
 
     <Spinner
         android:id="@+id/spinnerSubCategoria"
@@ -73,13 +73,13 @@
         android:layout_marginEnd="6dp"
         android:layout_marginRight="6dp"
         android:layout_marginBottom="116dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fechaNacimiento3"
-        app:layout_constraintEnd_toStartOf="@+id/btnEmpleado3"
+        app:layout_constraintBottom_toBottomOf="@+id/fechaFin"
+        app:layout_constraintEnd_toStartOf="@+id/btnEmpleado"
         app:layout_constraintStart_toStartOf="@+id/btnFecha2"
-        app:layout_constraintTop_toBottomOf="@+id/btnEmpleado3" />
+        app:layout_constraintTop_toBottomOf="@+id/btnEmpleado" />
 
     <Button
-        android:id="@+id/btnEmpleado3"
+        android:id="@+id/btnEmpleado"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="2dp"
@@ -91,12 +91,13 @@
         android:onClick="buscarEmpleado"
         android:text="@string/btnEmpleado"
         android:textColor="@color/primaryTextColor"
-        app:layout_constraintBottom_toBottomOf="@+id/empleado2"
-        app:layout_constraintEnd_toEndOf="@+id/btnCliente3"
-        app:layout_constraintStart_toStartOf="@+id/btnCliente3" />
+        app:layout_constraintBottom_toBottomOf="@+id/empleado"
+        app:layout_constraintEnd_toEndOf="@+id/btnCliente"
+        app:layout_constraintStart_toStartOf="@+id/btnCliente"
+        app:layout_constraintTop_toBottomOf="@+id/btnCliente" />
 
     <Button
-        android:id="@+id/btnCliente3"
+        android:id="@+id/btnCliente"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="39dp"
@@ -107,13 +108,13 @@
         android:onClick="buscarCliente"
         android:text="@string/btnPaciente"
         android:textColor="@color/primaryTextColor"
-        app:layout_constraintBottom_toBottomOf="@+id/btnEmpleado3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEmpleado"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cliente3"
+        app:layout_constraintStart_toEndOf="@+id/cliente"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/cliente3"
+        android:id="@+id/cliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -122,11 +123,11 @@
         android:enabled="false"
         android:hint="@string/txtPaciente"
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnCliente3"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnCliente"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/empleado2"
+        android:id="@+id/empleado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="93dp"
@@ -136,7 +137,7 @@
         android:enabled="false"
         android:hint="@string/txtEmpleado"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/btnEmpleado3"
+        app:layout_constraintEnd_toStartOf="@+id/btnEmpleado"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -149,7 +150,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="@+id/spinnerCategoria"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/btnEmpleado3" />
+        app:layout_constraintTop_toTopOf="@+id/btnEmpleado" />
 
     <TextView
         android:id="@+id/textView4"
@@ -166,4 +167,16 @@
         app:layout_constraintEnd_toEndOf="@+id/spinnerSubCategoria"
         app:layout_constraintStart_toStartOf="@+id/btnFecha2"
         app:layout_constraintTop_toTopOf="@+id/spinnerCategoria" />
+
+    <Button
+        android:id="@+id/btnFiltro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="29dp"
+        android:onClick="aplicarFiltro"
+        android:text="@string/btnFiltro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFecha3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

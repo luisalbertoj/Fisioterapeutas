@@ -1,7 +1,9 @@
 package com.example.clinica_fisioterapeutica.Services;
 
 
+import com.example.clinica_fisioterapeutica.Models.Categoria;
 import com.example.clinica_fisioterapeutica.Models.FichaArchivo;
+import com.example.clinica_fisioterapeutica.Models.ResponseCategoria;
 import com.example.clinica_fisioterapeutica.Models.ResponseFichaArchivo;
 
 import com.example.clinica_fisioterapeutica.Models.FichaClinica;
@@ -11,6 +13,7 @@ import com.example.clinica_fisioterapeutica.Models.ResponseFichaClinica;
 import com.example.clinica_fisioterapeutica.Models.ResponsePersona;
 import com.example.clinica_fisioterapeutica.Models.ResponseReserva;
 import com.example.clinica_fisioterapeutica.Models.Reserva;
+import com.example.clinica_fisioterapeutica.Models.ResponseTipoproducto;
 
 import java.util.List;
 
@@ -79,7 +82,6 @@ public interface ApiServices {
     Call<ResponseFichaClinica> getFichaLike(
             @Query("orderBy")String orderBy,
             @Query("orderDir")String orderDir,
-            @Query("like") String like,
             @Query("ejemplo") String ejemplo
     );
     @Headers({
@@ -158,5 +160,16 @@ public interface ApiServices {
             @Path("idPersona") String idPersona,
             @Query("fecha") String fecha,
             @Query("disponible") String disponible
+    );
+
+    @GET("categoria")
+    Call<ResponseCategoria> getCategoria(
+            @Query("orderBy")String orderBy,
+            @Query("orderDir")String orderDir
+    );
+
+    @GET("tipoProducto")
+    Call<ResponseTipoproducto> getTipoProducto(
+            @Query("ejemplo") String ejemplo
     );
 }

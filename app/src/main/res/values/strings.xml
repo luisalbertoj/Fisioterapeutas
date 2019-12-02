@@ -44,5 +44,8 @@
     <string name="btnReserva">Reservas</string>
     <string name="textCategoria">Categoria</string>
     <string name="txtSubcategoria">Sub Categoria</string>
+    <string name="textFechaInicio">Fecha inicio</string>
+    <string name="txtFechaFin">Fecha fin</string>
+    <string name="btnFiltro">Filtrar</string>
 
 </resources>
