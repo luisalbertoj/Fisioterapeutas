@@ -8,157 +8,165 @@
     tools:context=".Controllers.Paciente.AgregarEditarPersonaActivity">
 
 
-    <Button
-        android:id="@+id/btnFecha"
+    <EditText
+        android:id="@+id/empleado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="openDataPicker"
-        android:text="@string/btnFecha"
-        app:layout_constraintEnd_toStartOf="@+id/tipoPersona"
-        app:layout_constraintTop_toBottomOf="@+id/tipoPersona" />
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:hint="@string/textEmail"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/idFichaClinica"
+        app:layout_constraintStart_toStartOf="@+id/cliente"
+        app:layout_constraintTop_toBottomOf="@+id/cliente" />
 
     <EditText
         android:id="@+id/motivoConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="11dp"
         android:ems="10"
         android:hint="@string/textNombre"
         android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/diagnostico"
+        app:layout_constraintTop_toBottomOf="@+id/diagnostico" />
+
+    <EditText
+        android:id="@+id/tipoPersona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="@string/textTipoPersona"
+        android:inputType="textPersonName"
         android:text="FISICA"
-        app:layout_constraintStart_toStartOf="@+id/producto"
-        app:layout_constraintTop_toBottomOf="@+id/producto" />
+        app:layout_constraintBottom_toTopOf="@+id/btnFecha"
+        app:layout_constraintStart_toStartOf="@+id/idFichaClinica"
+        app:layout_constraintTop_toBottomOf="@+id/idFichaClinica" />
+
+    <EditText
+        android:id="@+id/fechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/textFechaNacimiento"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnFecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnFecha" />
+
+    <EditText
+        android:id="@+id/cliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/textRuc"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/empleado"
+        app:layout_constraintStart_toStartOf="@+id/observacion"
+        app:layout_constraintTop_toBottomOf="@+id/observacion" />
 
     <EditText
         android:id="@+id/idFichaClinica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginBottom="43dp"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/textId"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/cliente"
-        app:layout_constraintTop_toBottomOf="@+id/cliente" />
+        app:layout_constraintBottom_toTopOf="@+id/tipoPersona"
+        app:layout_constraintStart_toStartOf="@+id/empleado"
+        app:layout_constraintTop_toBottomOf="@+id/empleado" />
 
-    <EditText
-        android:id="@+id/diagnostico"
+    <Button
+        android:id="@+id/btnFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="@string/textApellido"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/observacion"
-        app:layout_constraintStart_toStartOf="@+id/motivoConsulta"
-        app:layout_constraintTop_toBottomOf="@+id/idFichaClinica" />
+        android:layout_marginBottom="8dp"
+        android:onClick="openDataPicker"
+        android:text="@string/btnFecha"
+        app:layout_constraintBottom_toTopOf="@+id/btnEliminar"
+        app:layout_constraintEnd_toStartOf="@+id/fechaNacimiento"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tipoPersona" />
 
     <EditText
         android:id="@+id/observacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="@string/textTelefono"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/cliente"
-        app:layout_constraintStart_toStartOf="@+id/diagnostico"
+        app:layout_constraintStart_toStartOf="@+id/motivoConsulta"
         app:layout_constraintTop_toBottomOf="@+id/diagnostico" />
 
     <EditText
-        android:id="@+id/empleado"
+        android:id="@+id/diagnostico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginBottom="55dp"
         android:ems="10"
-        android:hint="@string/textEmail"
+        android:hint="@string/textApellido"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/observacion"
-        app:layout_constraintTop_toBottomOf="@+id/observacion" />
-
-    <EditText
-        android:id="@+id/cliente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:ems="10"
-        android:hint="@string/textRuc"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/diagnostico"
-        app:layout_constraintTop_toBottomOf="@+id/diagnostico" />
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/observacion"
+        app:layout_constraintStart_toStartOf="@+id/producto"
+        app:layout_constraintTop_toBottomOf="@+id/producto" />
 
     <EditText
         android:id="@+id/producto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginRight="71dp"
         android:ems="10"
         android:hint="@string/textCedula"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/motivoConsulta"
-        app:layout_constraintTop_toTopOf="@+id/motivoConsulta" />
-
-    <EditText
-        android:id="@+id/tipoPersona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:enabled="true"
-        android:hint="@string/textTipoPersona"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/idFichaClinica"
-        app:layout_constraintTop_toTopOf="@+id/idFichaClinica" />
-
-    <EditText
-        android:id="@+id/fechaNacimiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="@string/textFechaNacimiento"
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnFecha"
-        app:layout_constraintStart_toStartOf="@+id/tipoPersona" />
+        app:layout_constraintBottom_toTopOf="@+id/diagnostico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnGuardar"
         android:layout_width="0dp"
         android:layout_height="43dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginRight="54dp"
         android:background="@color/colorPrimary"
         android:onClick="AgregarEditarPersona"
         android:text="@string/btnGuardarCambios"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnEliminar" />
+        app:layout_constraintStart_toEndOf="@+id/btnEliminar"
+        app:layout_constraintTop_toTopOf="@+id/btnEliminar" />
 
     <Button
         android:id="@+id/btnEliminar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginBottom="81dp"
         android:background="@android:color/holo_red_dark"
         android:onClick="eliminarPaciente"
         android:text="@string/btnEliminar"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="@+id/btnGuardar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnGuardar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnGuardar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFecha" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

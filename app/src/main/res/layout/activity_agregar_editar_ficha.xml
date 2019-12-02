@@ -7,12 +7,38 @@
     android:background="@mipmap/fondo"
     tools:context=".Controllers.Fichas.AgregarEditarFichaActivity">
 
+    <Spinner
+        android:id="@+id/spinnerCategoria"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerSubCategoria"
+        app:layout_constraintEnd_toStartOf="@+id/btnEmpleado"
+        app:layout_constraintStart_toStartOf="@+id/btnEliminar"
+        app:layout_constraintTop_toBottomOf="@+id/btnCliente" />
+
+    <Spinner
+        android:id="@+id/spinnerSubCategoria"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAgregarArchivo"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerCategoria"
+        app:layout_constraintStart_toStartOf="@+id/cliente"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
+
     <Button
         android:id="@+id/btnEliminarArchivo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
         android:layout_marginBottom="21dp"
         android:background="@android:color/holo_red_dark"
         android:onClick="eliminarArchivoFicha"
@@ -29,12 +55,12 @@
         android:layout_height="42dp"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnGuardar"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGuardar"
         app:layout_constraintEnd_toStartOf="@+id/btnEliminarArchivo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAgregarArchivo" />
+        app:layout_constraintTop_toTopOf="@+id/btnAgregarArchivo" />
 
     <Button
         android:id="@+id/btnAgregarArchivo"
@@ -50,50 +76,23 @@
         app:layout_constraintBottom_toTopOf="@+id/btnEliminarArchivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtFile"
-        app:layout_constraintTop_toBottomOf="@+id/txtServicio" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSubCategoria" />
 
     <EditText
         android:id="@+id/txtFile"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnEliminarArchivo"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerArchivos"
         app:layout_constraintEnd_toStartOf="@+id/btnAgregarArchivo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnAgregarArchivo" />
-
-    <EditText
-        android:id="@+id/txtServicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginBottom="52dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnAgregarArchivo"
-        app:layout_constraintStart_toStartOf="@+id/spinnerServicio"
-        app:layout_constraintTop_toBottomOf="@+id/btnCliente" />
-
-    <Spinner
-        android:id="@+id/spinnerServicio"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="57dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtFile"
-        app:layout_constraintEnd_toStartOf="@+id/btnCliente"
-        app:layout_constraintStart_toStartOf="@+id/cliente"
-        app:layout_constraintTop_toBottomOf="@+id/cliente" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSubCategoria" />
 
     <Button
         android:id="@+id/btnEmpleado"
@@ -135,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="11dp"
         android:layout_marginRight="11dp"
         android:ems="10"
@@ -145,7 +144,7 @@
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/btnCliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEmpleado" />
+        app:layout_constraintTop_toBottomOf="@+id/empleado" />
 
     <Button
         android:id="@+id/btnCliente"
@@ -153,12 +152,12 @@
         android:layout_height="0dp"
         android:layout_marginEnd="13dp"
         android:layout_marginRight="13dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="buscarCliente"
         android:text="@string/btnPaciente"
         android:textColor="@color/primaryTextColor"
-        app:layout_constraintBottom_toTopOf="@+id/txtServicio"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCategoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cliente"
         app:layout_constraintTop_toBottomOf="@+id/btnEmpleado" />
@@ -260,5 +259,13 @@
         app:layout_constraintBottom_toTopOf="@+id/btnEmpleado"
         app:layout_constraintEnd_toEndOf="@+id/diagnostico"
         app:layout_constraintTop_toBottomOf="@+id/diagnostico" />
+
+    <TextView
+        android:id="@+id/servicio"
+        android:layout_width="113dp"
+        android:layout_height="25dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="266dp"
+        tools:layout_editor_absoluteY="330dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

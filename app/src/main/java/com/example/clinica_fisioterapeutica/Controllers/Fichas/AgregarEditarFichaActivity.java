@@ -15,10 +15,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clinica_fisioterapeutica.Controllers.Paciente.PacientesActivity;
+import com.example.clinica_fisioterapeutica.Models.Categoria;
 import com.example.clinica_fisioterapeutica.Models.FichaArchivo;
 import com.example.clinica_fisioterapeutica.Models.FichaClinica;
 import com.example.clinica_fisioterapeutica.Models.Persona;
+import com.example.clinica_fisioterapeutica.Models.ResponseCategoria;
 import com.example.clinica_fisioterapeutica.Models.ResponseFichaArchivo;
+import com.example.clinica_fisioterapeutica.Models.ResponseTipoproducto;
 import com.example.clinica_fisioterapeutica.Models.TipoProducto;
 import com.example.clinica_fisioterapeutica.R;
 import com.example.clinica_fisioterapeutica.Services.ApiAdapter;
@@ -46,19 +49,21 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
     TextView empleado;
     TextView cliente;
     TextView servicio;
-
+    private static String[] categorias;
+    private static String[] subCategorias;
     TextView txtFile;
     private String pdfFileName;
     private PDFView pdfView;
     public ProgressDialog pDialog;
     public static final int FILE_PICKER_REQUEST_CODE = 1;
     private String pdfPath;
-
+    Spinner spinnerCategoria;
+    Spinner spinnerSubcategoria;
+    String idCategoria = "";
+    String idSubCategoria = "";
     private Spinner spinner;
     private static String[] paths;
     String archivoEliminar = "";
-
-    Spinner spinnerServicio;
     Button btnEliminarArchivo;
     Button btnEliminar;
     Button btnEmpleado;
@@ -89,8 +94,9 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
         btnEliminarArchivo = findViewById(R.id.btnEliminarArchivo);
         btnAgregarArchivo = findViewById(R.id.btnAgregarArchivo);
         spinner = findViewById(R.id.spinnerArchivos);
-        servicio = findViewById(R.id.txtServicio);
-        spinnerServicio = findViewById(R.id.spinnerServicio);
+        servicio = findViewById(R.id.servicio);
+        spinnerCategoria = findViewById(R.id.spinnerCategoria);
+        spinnerSubcategoria = findViewById(R.id.spinnerSubCategoria);
 
         txtFile = findViewById(R.id.txtFile);
         initDialog();
@@ -104,7 +110,8 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
             btnEmpleado.setVisibility(View.INVISIBLE);
             btnCliente.setVisibility(View.INVISIBLE);
 
-            spinnerServicio.setVisibility(View.INVISIBLE);
+            spinnerCategoria.setVisibility(View.INVISIBLE);
+            spinnerSubcategoria.setVisibility(View.INVISIBLE);
 
         } else {
             btnEliminar.setVisibility(View.INVISIBLE);
@@ -130,7 +137,7 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
         btnEliminarArchivo.setVisibility(View.INVISIBLE);
 
         buscarTipoProducto();
-
+        cargarCategorias();
     }
 
     public void cargarModelo(String idModelo) {
@@ -373,10 +380,90 @@ public class AgregarEditarFichaActivity extends AppCompatActivity implements Ada
 
     }
 
+    public void cargarCategorias() {
+        Call<ResponseCategoria> call= ApiAdapter.getApiService().getCategoria("idCategoria","asc");
+        call.enqueue(new Callback<ResponseCategoria>() {
+            @Override
+            public void onResponse(Call<ResponseCategoria> call, Response<ResponseCategoria> response) {
+                if (response.isSuccessful()) {
+                    List<Categoria> categoria = response.body().getLista();
+                    if (categoria != null && (!response.body().getTotalDatos().equals("0"))) {
+                        Log.v("debug:", "entro a poblar");
+                        categorias = new String[categoria.size()];
+                        categorias[0] = "Seleccionar";
+                        for (int i=1; i<categoria.size(); i++) {
+                            categorias[i] = categoria.get(i).getIdCategoria() + "-" + categoria.get(i).getDescripcion();
+
+                        }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AgregarEditarFichaActivity.this,
+                                android.R.layout.simple_spinner_dropdown_item, categorias);
+
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCategoria.setAdapter(adapter);
+                        spinnerCategoria.setOnItemSelectedListener(AgregarEditarFichaActivity.this);
+                    } else {
+                        Log.v("debug:", "entro al else");
+                        categorias = new String[]{"No tiene Archivos"};
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCategoria> call, Throwable t) {
+                Log.w("warning",t.getCause());
+                categorias = new String[]{"No tiene Archivos"};
+            }
+        });
+    }
+    public void cargarSubCategorias() {
+        String ejemplo = ("{ \"idCategoria\": {\n" +
+                "                \"idCategoria\": "+idCategoria+"}}");
+        Call<ResponseTipoproducto> call= ApiAdapter.getApiService().getTipoProducto(ejemplo);
+        call.enqueue(new Callback<ResponseTipoproducto>() {
+            @Override
+            public void onResponse(Call<ResponseTipoproducto> call, Response<ResponseTipoproducto> response) {
+                if (response.isSuccessful()) {
+                    List<TipoProducto> tipoProductos = response.body().getLista();
+                    if (tipoProductos != null && (!response.body().getTotalDatos().equals("0"))) {
+                        Log.v("debug:", "entro a poblar");
+                        subCategorias = new String[tipoProductos.size()];
+                        subCategorias[0] = "Seleccionar";
+                        for (int i=1; i<tipoProductos.size(); i++) {
+                            subCategorias[i] = tipoProductos.get(i).getIdTipoProducto() + "-" + tipoProductos.get(i).getDescripcion();
+                        }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AgregarEditarFichaActivity.this,
+                                android.R.layout.simple_spinner_dropdown_item, subCategorias);
+
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerSubcategoria.setAdapter(adapter);
+                        spinnerSubcategoria.setOnItemSelectedListener(AgregarEditarFichaActivity.this);
+                    } else {
+                        Log.v("debug:", "entro al else");
+                        subCategorias = new String[]{"No tiene Archivos"};
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseTipoproducto> call, Throwable t) {
+                Log.w("warning",t.getCause());
+                categorias = new String[]{"No tiene Archivos"};
+            }
+        });
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-        String split[] = paths[position].split("-");
-        archivoEliminar = split[0];
+        String split[] = categorias[position].split("-");
+        if(split[0].equalsIgnoreCase("Seleccionar")) {
+            return;
+        }
+        else if(split[0].equalsIgnoreCase("subcategoria")) {
+            idSubCategoria = split[1];
+        } else {
+            idCategoria = split[0];
+            cargarSubCategorias();
+        }
     }
 
     @Override
