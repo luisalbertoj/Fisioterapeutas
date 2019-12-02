@@ -42,5 +42,7 @@
     <string name="flagAsistir">Asistio</string>
     <string name="titleHorarios">Seleccione uno de los horarios disponibles</string>
     <string name="btnReserva">Reservas</string>
+    <string name="textCategoria">Categoria</string>
+    <string name="txtSubcategoria">Sub Categoria</string>
 
 </resources>

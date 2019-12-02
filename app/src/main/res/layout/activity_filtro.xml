@@ -6,56 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.Fichas.FiltroActivity">
 
-    <Spinner
-        android:id="@+id/spinnerServicio2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="37dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerServicio3"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerServicio3"
-        app:layout_constraintStart_toStartOf="@+id/empleado2"
-        app:layout_constraintTop_toBottomOf="@+id/empleado2" />
+    <EditText
+        android:id="@+id/fechaNacimiento3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/textFechaNacimiento"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnFecha3"
+        app:layout_constraintStart_toEndOf="@+id/btnFecha3" />
+
+    <Button
+        android:id="@+id/btnFecha3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="10dp"
+        android:onClick="openDataPicker"
+        android:text="@string/btnFecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFecha2" />
+
+    <EditText
+        android:id="@+id/fechaNacimiento2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/textFechaNacimiento"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnFecha2"
+        app:layout_constraintStart_toEndOf="@+id/btnFecha2" />
+
+    <Button
+        android:id="@+id/btnFecha2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginBottom="244dp"
+        android:onClick="openDataPicker"
+        android:text="@string/btnFecha"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerServicio3"
-        android:layout_width="210dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="305dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerServicio2" />
+        android:id="@+id/spinnerCategoria"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerSubCategoria"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSubCategoria"
+        app:layout_constraintStart_toStartOf="@+id/empleado2"
+        app:layout_constraintTop_toBottomOf="@+id/btnEmpleado3" />
+
+    <Spinner
+        android:id="@+id/spinnerSubCategoria"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="116dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fechaNacimiento3"
+        app:layout_constraintEnd_toStartOf="@+id/btnEmpleado3"
+        app:layout_constraintStart_toStartOf="@+id/btnFecha2"
+        app:layout_constraintTop_toBottomOf="@+id/btnEmpleado3" />
 
     <Button
         android:id="@+id/btnEmpleado3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_marginBottom="466dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="2dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="buscarEmpleado"
         android:text="@string/btnEmpleado"
         android:textColor="@color/primaryTextColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/empleado2"
-        app:layout_constraintTop_toBottomOf="@+id/btnCliente3" />
+        app:layout_constraintBottom_toBottomOf="@+id/empleado2"
+        app:layout_constraintEnd_toEndOf="@+id/btnCliente3"
+        app:layout_constraintStart_toStartOf="@+id/btnCliente3" />
 
     <Button
         android:id="@+id/btnCliente3"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="17dp"
         android:layout_marginRight="17dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="49dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="buscarCliente"
         android:text="@string/btnPaciente"
         android:textColor="@color/primaryTextColor"
-        app:layout_constraintBottom_toTopOf="@+id/btnEmpleado3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEmpleado3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cliente3"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,32 +118,52 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginBottom="9dp"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/txtPaciente"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/empleado2"
-        app:layout_constraintEnd_toStartOf="@+id/btnCliente3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnCliente3"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/empleado2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="93dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
-        android:layout_marginBottom="27dp"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/txtEmpleado"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerServicio2"
         app:layout_constraintEnd_toStartOf="@+id/btnEmpleado3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cliente3" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginBottom="49dp"
+        android:text="@string/textCategoria"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerCategoria"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/btnEmpleado3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/txtSubcategoria"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerSubCategoria"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSubCategoria"
+        app:layout_constraintStart_toStartOf="@+id/btnFecha2"
+        app:layout_constraintTop_toTopOf="@+id/spinnerCategoria" />
 </androidx.constraintlayout.widget.ConstraintLayout>

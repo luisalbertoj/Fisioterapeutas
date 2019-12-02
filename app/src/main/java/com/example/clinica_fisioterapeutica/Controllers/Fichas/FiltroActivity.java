@@ -13,4 +13,14 @@ public class FiltroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtro);
     }
+    public void openDataPicker(android.view.View view) {
+
+    }
+    public void buscarEmpleado(android.view.View view) {
+
+    }
+    public void buscarCliente(android.view.View view) {
+        
+    }
+
 }
