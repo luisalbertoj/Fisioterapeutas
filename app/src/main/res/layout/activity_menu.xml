@@ -4,57 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/fondo1"
     tools:context=".Controllers.MenuActivity">
 
     <Button
         android:id="@+id/btnSalir"
-        android:layout_width="411dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorPrimary"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="45dp"
+        android:background="#F31206"
         android:onClick="openSalir"
         android:text="@string/btnSalir"
-        android:textColor="@color/primaryTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTurnos" />
-
-    <Button
-        android:id="@+id/btnFichas"
-        android:layout_width="409dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorPrimary"
-        android:onClick="openFichas"
-        android:text="@string/btnFicha"
-        android:textColor="@color/primaryTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPacientes" />
-
-    <Button
-        android:id="@+id/btnPacientes"
-        android:layout_width="411dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorPrimary"
-        android:onClick="openPacientes"
-        android:text="@string/btnPacientes"
-        android:textColor="@color/primaryTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnTurnos"
-        android:layout_width="411dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorPrimary"
-        android:onClick="openTurnos"
-        android:text="Turnos"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorWhite"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFichas" />
+
+    <Button
+        android:id="@+id/btnPacientes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="137dp"
+        android:layout_marginBottom="33dp"
+        android:background="#5870cb"
+        android:onClick="openPacientes"
+        android:text="@string/btnPacientes"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnFichas"
+        app:layout_constraintEnd_toEndOf="@+id/btnFichas"
+        app:layout_constraintStart_toStartOf="@+id/btnFichas"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnFichas"
+        android:layout_width="205dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="99dp"
+        android:background="#5870cb"
+        android:onClick="openFichas"
+        android:text="@string/btnFicha"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSalir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPacientes" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
